@@ -70,6 +70,7 @@
     <Content Include="booking.aspx" />
     <Content Include="login.aspx" />
     <Content Include="signup.aspx" />
+    <Content Include="TestLoginform.aspx" />
     <Content Include="updateprofile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -99,6 +100,13 @@
       <DependentUpon>signup.aspx</DependentUpon>
     </Compile>
     <Compile Include="SQLConnectionString.cs" />
+    <Compile Include="TestLoginform.aspx.cs">
+      <DependentUpon>TestLoginform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestLoginform.aspx.designer.cs">
+      <DependentUpon>TestLoginform.aspx</DependentUpon>
+    </Compile>
     <Compile Include="updateprofile.aspx.cs">
       <DependentUpon>updateprofile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
