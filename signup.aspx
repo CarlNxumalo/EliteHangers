@@ -56,13 +56,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
+<<<<<<< HEAD
         <div id="container">
             <div id="logo">
                 <img src="path-to-your-logo.png" alt="Elite Hangers Logo" />
             </div>
             <div class="input-group">
                 <label for="txtName">Name:</label>
-                <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtName1" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="input-group">
                 <label for="txtSurname">Surname:</label>
@@ -83,6 +84,11 @@
             <div class="btn-container">
                 <asp:Button ID="btnAddCustomer" runat="server" Text="Sign Up" CssClass="btn btn-primary" OnClick="btnAddCustomer_Click" />
             </div>
+=======
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Name : "></asp:Label>
+            <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+>>>>>>> 4728640d8a2d188f4b37c9550fc0df3a204f989b
         </div>
     </form>
 </body>

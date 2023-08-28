@@ -17,7 +17,7 @@ namespace EliteHangers
 
         protected void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            customer.addCustomer(txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, txtPlaneNumber.Text);
+            customer.addCustomer(txtName1.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, txtPlaneNumber.Text);
             //take them to the login
             
         }
