@@ -18,6 +18,7 @@ namespace EliteHangers
         private string query;
         private List<SqlParameter> parameters;
 
+        //testing change
         // Constructor
         public SQL()
         {
