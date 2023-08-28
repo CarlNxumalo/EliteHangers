@@ -84,12 +84,6 @@
             <div class="btn-container">
                 <asp:Button ID="btnAddCustomer" runat="server" Text="Sign Up" CssClass="btn btn-primary" OnClick="btnAddCustomer_Click" />
             </div>
-=======
-        <div>
-            <asp:Label ID="Label1" runat="server" Text="Name : "></asp:Label>
-            <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
->>>>>>> 4728640d8a2d188f4b37c9550fc0df3a204f989b
-        </div>
     </form>
 </body>
 </html>
