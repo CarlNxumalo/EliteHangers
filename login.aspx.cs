@@ -10,6 +10,7 @@ namespace EliteHangers
 {
     public partial class login : System.Web.UI.Page
     {
+        SQL sql;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,6 +21,15 @@ namespace EliteHangers
             //
             //create a session after authentication
             //check both tables 
+            bool flag =  sql.authenticate(txtEmail.Text, txtPassword.Text);
+            if(flag)
+            {
+                Response.Redirect("dashboard.aspx");
+            }
+            else
+            {
+                //error message lbl 
+            }
         }
     }
 }

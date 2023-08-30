@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Web.SessionState;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 //
 namespace EliteHangers
@@ -15,6 +17,7 @@ namespace EliteHangers
         private string connection_string;
         private SqlConnection connection;
         private SqlCommand command;
+        private SqlDataReader dataReader;
         private string query;
         private List<SqlParameter> parameters;
 
@@ -125,7 +128,31 @@ namespace EliteHangers
             "SELECT employee_id, name, surname, email, password, role  " +
             "FROM Employee WHERE email = @email AND password = @password;";
             //create the session for the user if there is a match
+            try
+            {
+                string passwordDB="";
+                string emailDB="";
+                connectionOpen();
+                command = new SqlCommand(query, connection);
+                dataReader = command.ExecuteReader();
+                while(dataReader.Read())
+                {
+                    passwordDB = dataReader.GetValue(4).ToString();
+                    emailDB = dataReader.GetValue(3).ToString();
+
+                    if(passwordDB == password && emailDB == email)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception  ex)
+            {
+                throw;
+            }
             return false;
+
         }
+        
     }
 }
