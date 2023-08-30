@@ -122,6 +122,7 @@
     <Compile Include="updateprofile.aspx.designer.cs">
       <DependentUpon>updateprofile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserAuth.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

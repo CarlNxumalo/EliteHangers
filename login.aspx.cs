@@ -10,7 +10,7 @@ namespace EliteHangers
 {
     public partial class login : System.Web.UI.Page
     {
-        SQL sql;
+        SQL sql = new SQL();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -18,17 +18,30 @@ namespace EliteHangers
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            //
             //create a session after authentication
             //check both tables 
-            bool flag =  sql.authenticate(txtEmail.Text, txtPassword.Text);
-            if(flag)
+
+            try
             {
-                Response.Redirect("dashboard.aspx");
+                UserAuth user = sql.authenticate(txtEmail.Text, txtPassword.Text);
+                if (user != null)
+                {
+                    Session["name"] = user.name;
+                    Session["surname"] = user.surname;
+                    Session["id"] = user.id;
+                    Session["role"] = user.role;
+                    Session.Timeout = 1;
+                    Response.Redirect("dashboard.aspx");
+                }
+                else//null means not a user
+                {
+                    //error message lbl 
+                }
             }
-            else
+            catch (Exception)
             {
-                //error message lbl 
+
+                throw;
             }
         }
     }

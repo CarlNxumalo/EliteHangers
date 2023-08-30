@@ -118,7 +118,7 @@ namespace EliteHangers
             nonQuery(query);
         }
         //login a user
-        public bool authenticate(string email, string password)
+        public UserAuth authenticate(string email, string password)
         {
             //return true if successfull
             query =
@@ -130,27 +130,59 @@ namespace EliteHangers
             //create the session for the user if there is a match
             try
             {
+                int id = 0, role = 3;
+                string name = "", surname = "";
+
                 string passwordDB="";
                 string emailDB="";
+
                 connectionOpen();
                 command = new SqlCommand(query, connection);
+                parameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
+                    new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
+                };
+
+                foreach (SqlParameter parameter in parameters)
+                {
+                    command.Parameters.Add(parameter);
+                }
+
                 dataReader = command.ExecuteReader();
-                while(dataReader.Read())
+
+                if(dataReader.Read())
                 {
                     passwordDB = dataReader.GetValue(4).ToString();
                     emailDB = dataReader.GetValue(3).ToString();
 
                     if(passwordDB == password && emailDB == email)
                     {
-                        return true;
+                        role = 1; //customer
                     }
+                    name = dataReader.GetValue(1).ToString();
+                    surname = dataReader.GetValue(2).ToString();
+                    id = dataReader.GetInt32(0);
+
+                    if (dataReader.GetValue(5) != null) //they are a customer
+                    {
+                        role = dataReader.GetInt32(5); //if false employee else true -> manager
+                    }
+
+                    UserAuth obj = new UserAuth(role, name, surname, id);
+                    return obj;
                 }
+
             }
             catch (Exception  ex)
             {
-                throw;
+                
             }
-            return false;
+            finally
+            {
+                connectionClose();
+            }
+            return null;
 
         }
         

@@ -11,7 +11,18 @@ namespace EliteHangers
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["name"]!=null)
+            {
+                int role = int.Parse(Session["role"].ToString());
+                if(role!=3)//NOT CUSTIMER
+                {
+                    Response.Redirect("login.aspx");
+                }
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
+            }
         }
     }
 }
