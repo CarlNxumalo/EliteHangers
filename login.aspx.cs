@@ -11,6 +11,7 @@ namespace EliteHangers
     public partial class login : System.Web.UI.Page
     {
         SQL sql = new SQL();
+        UserAuth user;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,29 +21,28 @@ namespace EliteHangers
         {
             //create a session after authentication
             //check both tables 
-
-            try
+            user = AuthenticateUser(txtEmail.Text, txtPassword.Text);
+            if (user != null)
             {
-                UserAuth user = sql.authenticate(txtEmail.Text, txtPassword.Text);
-                if (user != null)
-                {
-                    Session["name"] = user.name;
-                    Session["surname"] = user.surname;
-                    Session["id"] = user.id;
-                    Session["role"] = user.role;
-                    Session.Timeout = 1;
-                    Response.Redirect("dashboard.aspx");
-                }
-                else//null means not a user
-                {
-                    //error message lbl 
-                }
+                Session["name"] = user.name;
+                Session["surname"] = user.surname;
+                Session["id"] = user.id;
+                Session["role"] = user.role;
+                   
+                Response.Redirect("dashboard.aspx");
             }
-            catch (Exception)
+            else//null means not a user
             {
+            //error message lbl 
 
-                throw;
+                lblerror.Text = "it is null";
             }
+
+        }
+        private UserAuth AuthenticateUser(string email, string password)
+        {
+            // Call your authenticate method here or modify it to return UserAuth directly
+            return sql.authenticate(email, password);
         }
     }
 }

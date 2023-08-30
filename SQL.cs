@@ -20,6 +20,7 @@ namespace EliteHangers
         private SqlDataReader dataReader;
         private string query;
         private List<SqlParameter> parameters;
+        public UserAuth obj;
 
         //testing change
         // Constructor
@@ -120,69 +121,62 @@ namespace EliteHangers
         //login a user
         public UserAuth authenticate(string email, string password)
         {
+            int id = 0;
+            int role = 3;
+            string name = "";
+            string surname = "";
+
+            string passwordDB = "";
+            string emailDB = "";
             //return true if successfull
             query =
             "SELECT customer_id, name, surname, email, password, NULL as role " +
             "FROM Customer WHERE email = @email AND password = @password " +
             "UNION ALL " +
-            "SELECT employee_id, name, surname, email, password, role  " +
-            "FROM Employee WHERE email = @email AND password = @password;";
-            //create the session for the user if there is a match
-            try
+            "SELECT employee_id, name, surname, email, password, role " +
+            "FROM Employee WHERE email = @email AND password = @password; ";
+
+            //add the parameters
+            parameters = new List<SqlParameter>
             {
-                int id = 0, role = 3;
-                string name = "", surname = "";
+                new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
+                new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
+            };
 
-                string passwordDB="";
-                string emailDB="";
+            connectionOpen();
 
-                connectionOpen();
-                command = new SqlCommand(query, connection);
-                parameters = new List<SqlParameter>
+            command = new SqlCommand(query, connection);
+
+            foreach (SqlParameter parameter in parameters)
+            {
+                command.Parameters.Add(parameter);
+            }
+            dataReader = command.ExecuteReader();
+
+            if (dataReader.Read())
+            {
+                passwordDB = dataReader.GetValue(4).ToString();
+                emailDB = dataReader.GetValue(3).ToString();
+
+                if(passwordDB == password && emailDB == email)
                 {
-                    new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
-                    new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
-                };
-
-                foreach (SqlParameter parameter in parameters)
-                {
-                    command.Parameters.Add(parameter);
+                    //match
+                    id = int.Parse(dataReader.GetValue(0).ToString());
+                    if(dataReader.GetValue(5)!=null)
+                    {
+                        role = int.Parse(dataReader.GetValue(5).ToString());
+                    }
+                    obj =  new UserAuth(role, name, surname, id);
+                    
                 }
 
-                dataReader = command.ExecuteReader();
-
-                if(dataReader.Read())
-                {
-                    passwordDB = dataReader.GetValue(4).ToString();
-                    emailDB = dataReader.GetValue(3).ToString();
-
-                    if(passwordDB == password && emailDB == email)
-                    {
-                        role = 1; //customer
-                    }
-                    name = dataReader.GetValue(1).ToString();
-                    surname = dataReader.GetValue(2).ToString();
-                    id = dataReader.GetInt32(0);
-
-                    if (dataReader.GetValue(5) != null) //they are a customer
-                    {
-                        role = dataReader.GetInt32(5); //if false employee else true -> manager
-                    }
-
-                    UserAuth obj = new UserAuth(role, name, surname, id);
-                    return obj;
-                }
-
+              
+               
             }
-            catch (Exception  ex)
-            {
-                
-            }
-            finally
-            {
-                connectionClose();
-            }
-            return null;
+            connectionClose();
+            return obj;
+
+            
 
         }
         

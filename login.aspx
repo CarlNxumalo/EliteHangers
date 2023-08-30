@@ -18,6 +18,7 @@
             <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
         </div>
         <asp:Button ID="btnLogin" runat="server" Text="Sign Up" Height="41px" Width="107px" OnClick="btnLogin_Click" />
+        <asp:Label ID="lblerror" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>
