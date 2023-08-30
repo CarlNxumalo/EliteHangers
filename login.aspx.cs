@@ -17,6 +17,7 @@ namespace EliteHangers
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            //
             //create a session after authentication
             //check both tables 
         }

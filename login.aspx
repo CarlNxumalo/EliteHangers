@@ -12,7 +12,6 @@
             <asp:Label ID="Label3" runat="server" Text="Email: "></asp:Label>
             <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         </div>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 
         <div>
             <asp:Label ID="Label4" runat="server" Text="Password: "></asp:Label>
