@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="booking.aspx" />
+    <Content Include="dashboard.aspx" />
     <Content Include="login.aspx" />
     <Content Include="signup.aspx" />
     <Content Include="TestLoginform.aspx" />
@@ -83,6 +84,13 @@
       <DependentUpon>booking.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs" />
+    <Compile Include="dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

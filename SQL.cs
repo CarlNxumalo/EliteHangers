@@ -119,10 +119,10 @@ namespace EliteHangers
         {
             //return true if successfull
             query =
-            "SELECT customer_id, email, password " +
+            "SELECT customer_id, name, surname, email, password, NULL as role " +
             "FROM Customer WHERE email = @email AND password = @password " +
             "UNION ALL " +
-            "SELECT employee_id, email, password " +
+            "SELECT employee_id, name, surname, email, password, role  " +
             "FROM Employee WHERE email = @email AND password = @password;";
             //create the session for the user if there is a match
             return false;
