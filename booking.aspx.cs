@@ -9,6 +9,8 @@ namespace EliteHangers
 {
     public partial class booking : System.Web.UI.Page
     {
+        SQL sql = new SQL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,7 +18,9 @@ namespace EliteHangers
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+            sql.connectionOpen();
+
+
         }
     }
 }

@@ -171,36 +171,13 @@ namespace EliteHangers
                     obj =  new UserAuth(role, name, surname, id);
                     
                 }
-
-              
-               
+  
             }
             connectionClose();
             return obj;
 
             
 
-        }
-
-        public void comboBoxCity()
-        {
-            connectionOpen();
-
-            query = "SELECT DISTINCTION name FROM City";
-
-            command = new SqlCommand(query, connection);
-
-            ds = new DataSet();
-            dataAdapter = new SqlDataAdapter();
-
-            dataAdapter.SelectCommand = command;
-
-            dataAdapter.Fill(ds);
-
-            
-
-
-            
         }
         
     }
