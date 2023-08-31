@@ -65,7 +65,7 @@ namespace EliteHangers
                 command.ExecuteNonQuery();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -189,11 +189,11 @@ namespace EliteHangers
 
         }
 
-        public void comboBox(string table, string column, DropDownList combo)
+        public void comboBox(string query,string table, string column, DropDownList combo)
         {
             connectionOpen();
 
-            query = $"SELECT DISTINCT {column} from {table} ";
+         
 
             command = new SqlCommand(query, connection);
 
