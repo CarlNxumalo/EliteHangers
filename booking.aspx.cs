@@ -14,21 +14,11 @@ namespace EliteHangers
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SQL sql = new SQL();
-
-            string sqlStatement = "SELECT name FROM Hangar";
-
-            ds = sql.display(sqlStatement, "Hangar");
-            ddl.DataSource = ds.Tables["Hangar"];
-            ddl.DataTextField = "name";
-           // ddl.DataValueField = "hangar_id";
-            ddl.DataBind();
-
+            sql.comboBox("City", "name", DropDownList1);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            sql.connectionOpen();
 
 
         }

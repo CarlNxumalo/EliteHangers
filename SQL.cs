@@ -188,30 +188,55 @@ namespace EliteHangers
 
 
         }
-        
 
-        public DataSet display(string sql, string table)
+        public void comboBox(string table, string column, DropDownList combo)
         {
-            try
-            {
-                connectionOpen();
-                command = new SqlCommand(sql, connection);
-                adapter = new SqlDataAdapter();
-                adapter.SelectCommand = command;
-                ds = new DataSet();
-                adapter.Fill(ds, table);
-                
-            }
-            catch (Exception)
-            {
+            connectionOpen();
 
-                throw;
-            }
-            finally
-            {
-                connectionClose();
-            }
-            return ds;
+            query = $"SELECT DISTINCT {column} from {table} ";
+
+            command = new SqlCommand(query, connection);
+
+            ds = new DataSet();
+            dataAdapter = new SqlDataAdapter();
+
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds,table);
+
+            combo.DataSource = ds.Tables[table];
+
+            combo.DataMember = column;
+            combo.DataTextField = column;
+            combo.DataBind();
+
+            connectionClose();
         }
+
+        public void display(string table, string column, GridView datagrid)
+        {
+            connectionOpen();
+
+            query = $"SELECT * from {table} ";
+
+            command = new SqlCommand(query, connection);
+
+            ds = new DataSet();
+            dataAdapter = new SqlDataAdapter();
+
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds, table);
+
+            datagrid.DataSource = ds;
+
+            datagrid.DataMember = table;
+
+            datagrid.DataBind();
+
+            connectionClose();
+
+
+
+        }
+
     }
 }
