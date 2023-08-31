@@ -16,19 +16,17 @@ namespace EliteHangers
         string query;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            /*
             if (!IsPostBack)
             {
                 query = "SELECT DISTINCT name FROM City";
-                sql.comboBox(query, "City", "name", DropDownList1);
+                sql.comboBox(query, "City", "name", );
                 query = $"SELECT * FROM Hangar ";
                 sql.comboBox(query, "Hangar", "name", drpLstBoxHnger);
             }
-
-
             query = $" SELECT  Hangar.name FROM Hangar JOIN City ON Hangar.city_id = City.city_id WHERE City.name = {DropDownList1.SelectedValue}";
             sql.comboBox(query, "Hangar", "name", drpLstBoxHnger);
-
+            */
         }
     }
 }
