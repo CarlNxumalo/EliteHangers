@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Data;
 namespace EliteHangers
 {
     public partial class booking : System.Web.UI.Page
     {
+        DataSet ds;
         SQL sql = new SQL();
         string query;
         protected void Page_Load(object sender, EventArgs e)
