@@ -29,23 +29,17 @@ namespace EliteHangers
                 Session["id"] = user.id;
                 Session["role"] = user.role;
                 Console.WriteLine("Yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
-                   
+
                 Response.Redirect("dashboard.aspx");
             }
             else//null means not a user
             {
-            //error message lbl 
+                //error message lbl 
 
-                    lblerror.Text = "it is null";
-                }
+                lblerror.Text = "it is null";
             }
-            catch (Exception ex )
-            {
-
-                lblerror.Text=ex.Message;
-            }
-
         }
+
         private UserAuth AuthenticateUser(string email, string password)
         {
             // Call your authenticate method here or modify it to return UserAuth directly
@@ -53,3 +47,4 @@ namespace EliteHangers
         }
     }
 }
+
