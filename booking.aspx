@@ -9,7 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:DropDownList ID="ddl" runat="server"></asp:DropDownList>
         </div>
+        
     </form>
 </body>
 </html>

@@ -28,6 +28,7 @@ namespace EliteHangers
                 Session["surname"] = user.surname;
                 Session["id"] = user.id;
                 Session["role"] = user.role;
+                Console.WriteLine("Yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
                    
                 Response.Redirect("dashboard.aspx");
             }

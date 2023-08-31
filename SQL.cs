@@ -18,6 +18,8 @@ namespace EliteHangers
         private SqlConnection connection;
         private SqlCommand command;
         private SqlDataReader dataReader;
+        private SqlDataAdapter adapter;
+        private DataSet ds;
         private string query;
         private List<SqlParameter> parameters;
         public UserAuth obj;
@@ -136,49 +138,87 @@ namespace EliteHangers
             "SELECT employee_id, name, surname, email, password, role " +
             "FROM Employee WHERE email = @email AND password = @password; ";
 
-            //add the parameters
-            parameters = new List<SqlParameter>
+            try
             {
-                new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
-                new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
-            };
-
-            connectionOpen();
-
-            command = new SqlCommand(query, connection);
-
-            foreach (SqlParameter parameter in parameters)
-            {
-                command.Parameters.Add(parameter);
-            }
-            dataReader = command.ExecuteReader();
-
-            if (dataReader.Read())
-            {
-                passwordDB = dataReader.GetValue(4).ToString();
-                emailDB = dataReader.GetValue(3).ToString();
-
-                if(passwordDB == password && emailDB == email)
+                //add the parameters
+                parameters = new List<SqlParameter>
                 {
-                    //match
-                    id = int.Parse(dataReader.GetValue(0).ToString());
-                    if(dataReader.GetValue(5)!=null)
-                    {
-                        role = int.Parse(dataReader.GetValue(5).ToString());
-                    }
-                    obj =  new UserAuth(role, name, surname, id);
-                    
-                }
+                    new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
+                    new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
+                };
 
-              
+                connectionOpen();
+
+                command = new SqlCommand(query, connection);
+
+                foreach (SqlParameter parameter in parameters)
+                {
+                    command.Parameters.Add(parameter);
+                }
+                dataReader = command.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    passwordDB = dataReader.GetValue(4).ToString();
+                    emailDB = dataReader.GetValue(3).ToString();
+
+                    if (passwordDB == password && emailDB == email)
+                    {
+                        //match
+                        id = int.Parse(dataReader.GetValue(0).ToString());
+                        if (dataReader.GetValue(5) != null)
+                        {
+                            role = int.Parse(dataReader.GetValue(5).ToString());
+                        }
+                        obj = new UserAuth(role, name, surname, id);
+
+                    }
+
+
+
+                }
+                Console.WriteLine("Succesfull authentications");
+                
                
             }
-            connectionClose();
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Authtentications exception: " + ex);
+            }
+            finally
+            {
+                connectionClose();
+            }
             return obj;
 
-            
+
 
         }
         
+
+        public DataSet display(string sql, string table)
+        {
+            try
+            {
+                connectionOpen();
+                command = new SqlCommand(sql, connection);
+                adapter = new SqlDataAdapter();
+                adapter.SelectCommand = command;
+                ds = new DataSet();
+                adapter.Fill(ds, table);
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connectionClose();
+            }
+            return ds;
+        }
     }
 }
