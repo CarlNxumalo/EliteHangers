@@ -55,6 +55,11 @@
                     <asp:Button ID="btnConfirm" runat="server" OnClick="Button1_Click" Text="Confirm Booking" />
                 </td>
             </tr>
+            <tr>
+                <td class="auto-style2">&nbsp;</td>
+                <td class="auto-style4">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
         </table>
     </form>
 </body>

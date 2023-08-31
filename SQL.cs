@@ -199,8 +199,35 @@ namespace EliteHangers
             combo.DataMember = column;
             combo.DataTextField = column;
             combo.DataBind();
+
+            connectionClose();
         }
 
-        
+        public void display(string table, string column, GridView datagrid)
+        {
+            connectionOpen();
+
+            query = $"SELECT * from {table} ";
+
+            command = new SqlCommand(query, connection);
+
+            ds = new DataSet();
+            dataAdapter = new SqlDataAdapter();
+
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds, table);
+
+            datagrid.DataSource = ds;
+
+            datagrid.DataMember = table;
+
+            datagrid.DataBind();
+
+            connectionClose();
+
+
+
+        }
+
     }
 }
