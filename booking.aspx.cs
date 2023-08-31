@@ -10,6 +10,8 @@ namespace EliteHangers
     public partial class booking : System.Web.UI.Page
     {
         DataSet ds;
+        SQL sql = new SQL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             SQL sql = new SQL();
