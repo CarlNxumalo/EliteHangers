@@ -13,5 +13,17 @@ namespace EliteHangers
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            //redirecting the admin to the hanger management form
+            Response.Redirect("frmHangerman.aspx");
+        }
+
+        protected void btnUserMan_Click(object sender, EventArgs e)
+        {
+            //Redirecting the admin to the user management form
+            Response.Redirect("frmUserMan.aspx");
+        }
     }
 }

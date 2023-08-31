@@ -70,6 +70,8 @@
     <Content Include="Admin.aspx" />
     <Content Include="booking.aspx" />
     <Content Include="dashboard.aspx" />
+    <Content Include="frmHangerMan.aspx" />
+    <Content Include="frmUserMan.aspx" />
     <Content Include="login.aspx" />
     <Content Include="signup.aspx" />
     <Content Include="TestLoginform.aspx" />
@@ -98,6 +100,20 @@
     </Compile>
     <Compile Include="dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmHangerMan.aspx.cs">
+      <DependentUpon>frmHangerMan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmHangerMan.aspx.designer.cs">
+      <DependentUpon>frmHangerMan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserMan.aspx.cs">
+      <DependentUpon>frmUserMan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserMan.aspx.designer.cs">
+      <DependentUpon>frmUserMan.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

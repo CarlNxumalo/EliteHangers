@@ -10,7 +10,7 @@
             width: 471px;
         }
         .auto-style2 {
-            width: 316px;
+            width: 298px;
         }
         .auto-style3 {
             margin-left: 520px;
@@ -21,7 +21,7 @@
     <form id="form1" runat="server">
         <div>
             <p class="auto-style3">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Admin<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Admin<br />
             </p>
         </div>
         <p>
@@ -53,11 +53,11 @@
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="Button1" runat="server" Text="User Management" />
+                    <asp:Button ID="btnHangMan" runat="server" OnClick="Button1_Click" Text="Hanger Management" />
                     &nbsp;</td>
                 <td class="auto-style2">&nbsp;</td>
                 <td>
-                    <asp:Button ID="Button2" runat="server" Text="User Management" />
+                    <asp:Button ID="btnUserMan" runat="server" OnClick="btnUserMan_Click" Text="User Management" />
                 </td>
             </tr>
             <tr>
