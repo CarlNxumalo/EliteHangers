@@ -13,12 +13,11 @@ namespace EliteHangers
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            sql.comboBox("City", "name", DropDownList1);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            sql.connectionOpen();
 
 
         }

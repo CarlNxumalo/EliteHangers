@@ -179,6 +179,28 @@ namespace EliteHangers
             
 
         }
+
+        public void comboBox(string table, string column, DropDownList combo)
+        {
+            connectionOpen();
+
+            query = $"SELECT DISTINCT {column} from {table} ";
+
+            command = new SqlCommand(query, connection);
+
+            ds = new DataSet();
+            dataAdapter = new SqlDataAdapter();
+
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds,table);
+
+            combo.DataSource = ds.Tables[table];
+
+            combo.DataMember = column;
+            combo.DataTextField = column;
+            combo.DataBind();
+        }
+
         
     }
 }
