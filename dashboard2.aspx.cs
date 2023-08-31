@@ -11,6 +11,8 @@ namespace EliteHangers
     {
         SQL sql = new SQL();
         string query;
+        
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)//first time the user visits the dashboard page
@@ -31,6 +33,10 @@ namespace EliteHangers
             lblError.Text = ddlCity.SelectedValue;
         }
 
-        
+        protected void ddlHangar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //once user selects hanger populate the clalender
+
+        }
     }
 }
