@@ -62,8 +62,7 @@
         </div>
         <div class="dashboard-container">
             <div class="dashboard-content">
-                <!-- Your content goes here -->
-            </div>
+                Welcome to Elite Hangers .<!-- Your content goes here --></div>
         </div>
     </form>
 </body>

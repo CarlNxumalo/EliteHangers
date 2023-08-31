@@ -155,12 +155,14 @@ namespace EliteHangers
                 {
                     command.Parameters.Add(parameter);
                 }
+
                 dataReader = command.ExecuteReader();
 
                 if (dataReader.Read())
                 {
                     passwordDB = dataReader.GetValue(4).ToString();
                     emailDB = dataReader.GetValue(3).ToString();
+
 
                     if (passwordDB == password && emailDB == email)
                     {
@@ -193,8 +195,6 @@ namespace EliteHangers
         {
             connectionOpen();
 
-         
-
             command = new SqlCommand(query, connection);
 
             ds = new DataSet();
@@ -210,7 +210,10 @@ namespace EliteHangers
             combo.DataBind();
 
             connectionClose();
+
+
         }
+
 
         public void display(string table, string column, GridView datagrid)
         {
