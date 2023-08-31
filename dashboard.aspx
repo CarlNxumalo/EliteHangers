@@ -87,7 +87,7 @@
                 <div class="dashboard-labels">
                     <label for="DropDownList1">Hanger Location:</label>
                     <div class="dashboard-inputs">
-                        <asp:DropDownList ID="DropDownList1" runat="server" Width="251px"></asp:DropDownList>
+                        <asp:DropDownList ID="DropDownList1" runat="server" Width="251px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"></asp:DropDownList>
                     </div>
                 </div>
                 <div class="dashboard-labels">
