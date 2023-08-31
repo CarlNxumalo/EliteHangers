@@ -231,10 +231,7 @@ namespace EliteHangers
             datagrid.DataMember = table;
 
             datagrid.DataBind();
-
             connectionClose();
-
-
 
         }
 
