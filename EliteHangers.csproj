@@ -70,6 +70,7 @@
     <Content Include="Admin.aspx" />
     <Content Include="booking.aspx" />
     <Content Include="dashboard.aspx" />
+    <Content Include="dashboard2.aspx" />
     <Content Include="login.aspx" />
     <Content Include="signup.aspx" />
     <Content Include="TestLoginform.aspx" />
@@ -98,6 +99,13 @@
     </Compile>
     <Compile Include="dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard2.aspx.cs">
+      <DependentUpon>dashboard2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard2.aspx.designer.cs">
+      <DependentUpon>dashboard2.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
