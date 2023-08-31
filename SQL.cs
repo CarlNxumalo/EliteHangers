@@ -18,8 +18,8 @@ namespace EliteHangers
         private SqlConnection connection;
         private SqlCommand command;
         private SqlDataReader dataReader;
-        private SqlDataAdapter adapter;
         private DataSet ds;
+        private SqlDataAdapter dataAdapter;
         private string query;
         private List<SqlParameter> parameters;
         public UserAuth obj;
@@ -177,14 +177,7 @@ namespace EliteHangers
 
 
                 }
-                Console.WriteLine("Succesfull authentications");
-                
-               
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine("Authtentications exception: " + ex);
+  
             }
             finally
             {

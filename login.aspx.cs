@@ -36,7 +36,13 @@ namespace EliteHangers
             {
             //error message lbl 
 
-                lblerror.Text = "it is null";
+                    lblerror.Text = "it is null";
+                }
+            }
+            catch (Exception ex )
+            {
+
+                lblerror.Text=ex.Message;
             }
 
         }

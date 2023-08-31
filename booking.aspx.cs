@@ -23,5 +23,12 @@ namespace EliteHangers
             ddl.DataBind();
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            sql.connectionOpen();
+
+
+        }
     }
 }
