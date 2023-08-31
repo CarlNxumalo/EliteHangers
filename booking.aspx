@@ -45,7 +45,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Select a city:"></asp:Label>
                     <br />
                     <br />
-                    <asp:DropDownList ID="DropDownList1" runat="server" Height="21px" Width="223px">
+                    <asp:DropDownList ID="DropDownList1" runat="server" Height="21px" Width="223px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style4">
@@ -56,7 +56,17 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">&nbsp;</td>
+                <td class="auto-style2">
+                    <asp:Label ID="lblHanger" runat="server" Text="Select hanger:"></asp:Label>
+                </td>
+                <td class="auto-style4">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:DropDownList ID="drpLstBoxHnger" runat="server" Height="21px" Width="223px">
+                    </asp:DropDownList>
+                </td>
                 <td class="auto-style4">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
