@@ -52,7 +52,7 @@
                     <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
                 </td>
                 <td>
-                    <asp:Button ID="Button1" runat="server" Text="Confirm Booking" />
+                    <asp:Button ID="btnConfirm" runat="server" OnClick="Button1_Click" Text="Confirm Booking" />
                 </td>
             </tr>
         </table>

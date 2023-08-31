@@ -18,6 +18,8 @@ namespace EliteHangers
         private SqlConnection connection;
         private SqlCommand command;
         private SqlDataReader dataReader;
+        private DataSet ds;
+        private SqlDataAdapter dataAdapter;
         private string query;
         private List<SqlParameter> parameters;
         public UserAuth obj;
@@ -178,6 +180,27 @@ namespace EliteHangers
 
             
 
+        }
+
+        public void comboBoxCity()
+        {
+            connectionOpen();
+
+            query = "SELECT DISTINCTION name FROM City";
+
+            command = new SqlCommand(query, connection);
+
+            ds = new DataSet();
+            dataAdapter = new SqlDataAdapter();
+
+            dataAdapter.SelectCommand = command;
+
+            dataAdapter.Fill(ds);
+
+            
+
+
+            
         }
         
     }
