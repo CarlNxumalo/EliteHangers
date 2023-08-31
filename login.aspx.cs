@@ -19,23 +19,22 @@ namespace EliteHangers
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            try
+            //create a session after authentication
+            //check both tables 
+            user = AuthenticateUser(txtEmail.Text, txtPassword.Text);
+            if (user != null)
             {
-                //create a session after authentication
-                //check both tables 
-                user = AuthenticateUser(txtEmail.Text, txtPassword.Text);
-                if (user != null)
-                {
-                    Session["name"] = user.name;
-                    Session["surname"] = user.surname;
-                    Session["id"] = user.id;
-                    Session["role"] = user.role;
-
-                    Response.Redirect("dashboard.aspx");
-                }
-                else//null means not a user
-                {
-                    //error message lbl 
+                Session["name"] = user.name;
+                Session["surname"] = user.surname;
+                Session["id"] = user.id;
+                Session["role"] = user.role;
+                Console.WriteLine("Yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
+                   
+                Response.Redirect("dashboard.aspx");
+            }
+            else//null means not a user
+            {
+            //error message lbl 
 
                     lblerror.Text = "it is null";
                 }

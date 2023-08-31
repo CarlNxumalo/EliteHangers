@@ -138,45 +138,54 @@ namespace EliteHangers
             "SELECT employee_id, name, surname, email, password, role " +
             "FROM Employee WHERE email = @email AND password = @password; ";
 
-            //add the parameters
-            parameters = new List<SqlParameter>
+            try
             {
-                new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
-                new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
-            };
-
-            connectionOpen();
-
-            command = new SqlCommand(query, connection);
-
-            foreach (SqlParameter parameter in parameters)
-            {
-                command.Parameters.Add(parameter);
-            }
-            dataReader = command.ExecuteReader();
-
-            if (dataReader.Read())
-            {
-                passwordDB = dataReader.GetValue(4).ToString();
-                emailDB = dataReader.GetValue(3).ToString();
-
-                if(passwordDB == password && emailDB == email)
+                //add the parameters
+                parameters = new List<SqlParameter>
                 {
-                    //match
-                    id = int.Parse(dataReader.GetValue(0).ToString());
-                    if(dataReader.GetValue(5)!=null)
+                    new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
+                    new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
+                };
+
+                connectionOpen();
+
+                command = new SqlCommand(query, connection);
+
+                foreach (SqlParameter parameter in parameters)
+                {
+                    command.Parameters.Add(parameter);
+                }
+                dataReader = command.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    passwordDB = dataReader.GetValue(4).ToString();
+                    emailDB = dataReader.GetValue(3).ToString();
+
+                    if (passwordDB == password && emailDB == email)
                     {
-                        role = int.Parse(dataReader.GetValue(5).ToString());
+                        //match
+                        id = int.Parse(dataReader.GetValue(0).ToString());
+                        if (dataReader.GetValue(5) != null)
+                        {
+                            role = int.Parse(dataReader.GetValue(5).ToString());
+                        }
+                        obj = new UserAuth(role, name, surname, id);
+
                     }
-                    obj =  new UserAuth(role, name, surname, id);
-                    
+
+
+
                 }
   
             }
-            connectionClose();
+            finally
+            {
+                connectionClose();
+            }
             return obj;
 
-            
+
 
         }
 
@@ -199,8 +208,35 @@ namespace EliteHangers
             combo.DataMember = column;
             combo.DataTextField = column;
             combo.DataBind();
+
+            connectionClose();
         }
 
-        
+        public void display(string table, string column, GridView datagrid)
+        {
+            connectionOpen();
+
+            query = $"SELECT * from {table} ";
+
+            command = new SqlCommand(query, connection);
+
+            ds = new DataSet();
+            dataAdapter = new SqlDataAdapter();
+
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds, table);
+
+            datagrid.DataSource = ds;
+
+            datagrid.DataMember = table;
+
+            datagrid.DataBind();
+
+            connectionClose();
+
+
+
+        }
+
     }
 }
