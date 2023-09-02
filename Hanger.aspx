@@ -47,10 +47,10 @@
         }
         .auto-style16 {
             height: 26px;
-            width: 358px;
+            width: 1125px;
         }
         .auto-style17 {
-            width: 358px;
+            width: 1125px;
         }
     </style>
 </head>
@@ -93,7 +93,7 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style16"></td>
-                <td class="auto-style12">&nbsp;</td>
+                <td class="auto-style12"></td>
                 <td class="auto-style12"></td>
                 <td class="auto-style10"></td>
             </tr>
@@ -108,7 +108,7 @@
                         <br />
                         <br />
                         <asp:Label ID="Label3" runat="server" Text="Name:"></asp:Label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
                         <br />
                         <br />

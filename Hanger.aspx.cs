@@ -24,7 +24,6 @@ namespace EliteHangers
         {
             sql.insertHanger(int.Parse(txtCity.Text), txtName.Text, decimal.Parse(txtPrice.Text));
             sql.display("Hangar",GridView1);
-            
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
