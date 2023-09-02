@@ -34,6 +34,13 @@
         .auto-style12 {
             height: 26px;
         }
+        .auto-style13 {
+            height: 26px;
+            width: 759px;
+        }
+        .auto-style14 {
+            width: 759px;
+        }
     </style>
 </head>
 <body>
@@ -67,12 +74,15 @@
         </p>
         <table style="width:100%;">
             <tr>
-                <td class="auto-style12"></td>
+                <td class="auto-style12">&nbsp;</td>
+                <td class="auto-style13"></td>
                 <td class="auto-style12"></td>
                 <td class="auto-style10"></td>
             </tr>
             <tr>
                 <td>
+                    &nbsp;</td>
+                <td class="auto-style14">
                     <asp:Panel ID="Panel1" runat="server" CssClass="auto-style4" GroupingText="INSERT" Width="378px">
                         <br />
                         <br />
@@ -145,6 +155,7 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
+                <td class="auto-style14">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td class="auto-style11">&nbsp;</td>
             </tr>
