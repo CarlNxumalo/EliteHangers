@@ -15,27 +15,14 @@
         .auto-style3 {
             width: 231px;
         }
-        .auto-style4 {
-            height: 26px;
-            width: 169px;
-        }
         .auto-style5 {
             height: 26px;
-            width: 364px;
         }
         .auto-style6 {
             width: 364px;
         }
-        .auto-style7 {
-            height: 26px;
-            width: 404px;
-        }
         .auto-style8 {
             width: 404px;
-        }
-        .auto-style9 {
-            height: 26px;
-            width: 114px;
         }
         .auto-style10 {
             width: 114px;
@@ -43,15 +30,15 @@
         .auto-style11 {
             margin-left: 0px;
         }
-        .auto-style12 {
-            height: 26px;
-            width: 187px;
-        }
         .auto-style13 {
             width: 187px;
         }
         .auto-style14 {
             width: 169px;
+        }
+        .auto-style15 {
+            text-align: center;
+            font-size: large;
         }
     </style>
 </head>
@@ -64,9 +51,14 @@
         </div>
         <table style="width:100%;">
             <tr>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style3"><strong>
+                    <asp:HyperLink ID="HyperLink1" runat="server" CssClass="auto-style15" NavigateUrl="~/Admin.aspx">Home</asp:HyperLink>
+                    </strong></td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="3">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style3">&nbsp;</td>
@@ -77,20 +69,14 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td colspan="3">&nbsp;</td>
             </tr>
         </table>
         <p>
             &nbsp;</p>
         <table style="width:100%;">
             <tr>
-                <td class="auto-style5"></td>
-                <td class="auto-style9">&nbsp;</td>
-                <td class="auto-style7"></td>
-                <td class="auto-style12">&nbsp;</td>
-                <td class="auto-style4"></td>
+                <td class="auto-style5" colspan="5"></td>
             </tr>
             <tr>
                 <td class="auto-style6">

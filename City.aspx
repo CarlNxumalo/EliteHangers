@@ -65,6 +65,13 @@
         </div>
         <table style="width:100%;">
             <tr>
+                <td class="auto-style3"><strong>
+                    <asp:HyperLink ID="HyperLink1" runat="server" CssClass="auto-style2" NavigateUrl="~/Admin.aspx">Home</asp:HyperLink>
+                    </strong></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
                 <td class="auto-style3">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>

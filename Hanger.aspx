@@ -34,6 +34,17 @@
         .auto-style12 {
             height: 26px;
         }
+        .auto-style13 {
+            width: 384px;
+            height: 39px;
+        }
+        .auto-style14 {
+            width: 842px;
+            height: 39px;
+        }
+        .auto-style15 {
+            height: 39px;
+        }
     </style>
 </head>
 <body>
@@ -45,6 +56,13 @@
         </div>
         <p>
             <table class="auto-style9">
+                <tr>
+                    <td class="auto-style13"><strong>
+                        <asp:HyperLink ID="HyperLink1" runat="server" CssClass="auto-style2" NavigateUrl="~/Admin.aspx">Home</asp:HyperLink>
+                        </strong></td>
+                    <td class="auto-style14"></td>
+                    <td class="auto-style15"></td>
+                </tr>
                 <tr>
                     <td class="auto-style3">&nbsp;</td>
                     <td class="auto-style8">&nbsp;</td>

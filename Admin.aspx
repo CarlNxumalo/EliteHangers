@@ -42,7 +42,7 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style4">
-                    <asp:HyperLink ID="HyperLink1" runat="server">Employee Management </asp:HyperLink>
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Employee.aspx">Employee Management </asp:HyperLink>
                 </td>
                 <td class="auto-style4">
                     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Hanger.aspx">Hanger Management</asp:HyperLink>
