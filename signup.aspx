@@ -56,7 +56,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-<<<<<<< HEAD
         <div id="container">
             <div id="logo">
                 <img src="path-to-your-logo.png" alt="Elite Hangers Logo" />
@@ -84,6 +83,7 @@
             <div class="btn-container">
                 <asp:Button ID="btnAddCustomer" runat="server" Text="Sign Up" CssClass="btn btn-primary" OnClick="btnAddCustomer_Click" />
             </div>
+        </div>
     </form>
 </body>
 </html>

@@ -189,7 +189,7 @@ namespace EliteHangers
 
         }
 
-        public void comboBox(string query,string table, string column, DropDownList combo)
+        public void comboBox(string query,string table, string column, DropDownList combo, string columValue)
         {
             connectionOpen();
 
@@ -203,10 +203,15 @@ namespace EliteHangers
             dataAdapter.SelectCommand = command;
             dataAdapter.Fill(ds,table);
 
+            DataRow blankRow = ds.Tables[table].NewRow();
+            blankRow[column] = ""; // Display an empty string for the blank item
+            ds.Tables[table].Rows.InsertAt(blankRow, 0);
+
             combo.DataSource = ds.Tables[table];
 
             combo.DataMember = column;
             combo.DataTextField = column;
+            combo.DataValueField = columValue;
             combo.DataBind();
 
             connectionClose();
@@ -233,6 +238,84 @@ namespace EliteHangers
             datagrid.DataBind();
             connectionClose();
 
+        }
+
+        //getting the dates start and end and then putting them into a list of dates.
+        public List<DateTime> databaseDates(string query)
+        {
+            List<DateTime> dateList = new List<DateTime>();
+
+            try
+            {
+               
+                connectionOpen();
+                command = new SqlCommand(query, connection);
+                dataReader = command.ExecuteReader();
+
+                while(dataReader.Read())
+                {
+                    //put the dates in the list
+                    dateList.Add(dataReader.GetDateTime(0));
+                    dateList.Add(dataReader.GetDateTime(1));
+                }
+
+                foreach (DateTime parameter in dateList)
+                {
+                    Console.WriteLine(parameter.ToString());
+                }
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connectionClose();
+            }
+
+            return dateList;
+        }
+        public string nextBooking(string query)
+        {
+            string date = "";
+
+            try
+            {
+                connectionOpen();
+                
+                command = new SqlCommand(query, connection);
+
+                dataReader = command.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    //put the dates in the list
+                    date = dataReader.GetDateTime(0).ToString();
+                }
+                else
+                {
+                    
+                }
+
+
+            }
+            catch (System.Data.SqlTypes.SqlNullValueException)
+            {
+                //data is null return ""
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connectionClose();
+            }
+
+            return date;
         }
 
     }
