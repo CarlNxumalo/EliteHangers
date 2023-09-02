@@ -260,19 +260,98 @@ namespace EliteHangers
             nonQuery(query);
         }
 
-        public void updateHanger(int city_id, string name, decimal price)
+        public void updateHanger(int hangar_id,int city_id, string name, decimal price)
         {
-            query = $"UPDATE Hangar SET city_id = @city_id, name = @name, price = @price";
+            query = $"UPDATE Hangar SET city_id = @city_id, name = @name, price = @price WHERE hangar_id = @hanger_id";
             //put the parameters in a list
             parameters = new List<SqlParameter>
             {
                 new SqlParameter("@city_id", SqlDbType.Int) { Value = city_id },
                 new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
-                new SqlParameter("@price", SqlDbType.Money) { Value = price }
-
+                new SqlParameter("@price", SqlDbType.Money) { Value = price },
+                new SqlParameter("@hanger_id", SqlDbType.Int) { Value = hangar_id }
+               
             };
             nonQuery(query);
 
+        }
+
+        public void deleteCity(int city_id)
+        {
+            query = "DELETE FROM City WHERE city_id = @city_id";
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@city_id", SqlDbType.Int) { Value =  city_id}
+            };
+            nonQuery(query);
+        }
+
+        public void insertCity( string name)
+        {
+            query = "INSERT INTO City (name)VALUES (@name)";
+            //put the parameters in a list
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name }
+             
+            };
+            nonQuery(query);
+        }
+
+
+        public void updateCity(int city_id,string name)
+        {
+            query = $"UPDATE City SET city_id = @city_id, name = @name, price = @price WHERE city_id= @city_id";
+            //put the parameters in a list
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
+                new SqlParameter("@city_id", SqlDbType.NVarChar) { Value = city_id }
+            };
+            nonQuery(query);
+
+        }
+
+        public void insertEmployee(string name, string surname,string email, string password,int role)
+        {
+            query = "INSERT INTO Employee (name, surname, email, password, role)VALUES (@name, @surname, @email, @password, @role)";
+            //put the parameters in a list
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
+                new SqlParameter("@surname", SqlDbType.NVarChar) { Value = surname },
+                new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
+                new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
+                new SqlParameter("@plane_number", SqlDbType.Int) { Value = role},
+            };
+            nonQuery(query);
+        }
+
+
+        public void deleteEmployee(int emp_id)
+        {
+            query = "DELETE FROM Employee WHERE employee_id = @employee_id";
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@employee_id", SqlDbType.Int) { Value = emp_id }
+            };
+            nonQuery(query);
+        }
+
+
+        public void updateEmployee(int emp_id, string name, string surname, string email, string password, int role)
+        {
+            query = $"UPDATE Employee SET name = @name, surname = @surname, email = @email, password = @password, role = @role WHERE employee_id = @employee_id";
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
+                new SqlParameter("@surname", SqlDbType.NVarChar) { Value = surname },
+                new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
+                new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
+                new SqlParameter("@role", SqlDbType.Int) { Value = role},
+                new SqlParameter("@role", SqlDbType.Int) { Value = emp_id},
+            };
+            nonQuery(query);
         }
     }
 }
