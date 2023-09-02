@@ -189,7 +189,7 @@ namespace EliteHangers
 
         }
 
-        public void comboBox(string query,string table, string column, DropDownList combo)
+        public void comboBox(string query,string table, string column, DropDownList combo, string columValue)
         {
             connectionOpen();
 
