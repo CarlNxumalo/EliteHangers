@@ -35,7 +35,7 @@ namespace EliteHangers
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            sql.updateHanger(int.Parse(txtCityUp.Text), txtNameUp.Text, decimal.Parse(txtPriceUp.Text));
+            sql.updateHanger(int.Parse(txtHangerUp.Text),int.Parse(txtCityUp.Text), txtNameUp.Text, decimal.Parse(txtPriceUp.Text));
             sql.display("Hangar", GridView1);
         }
     }

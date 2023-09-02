@@ -40,7 +40,7 @@
     <form id="form1" runat="server">
         <div class="auto-style1">
             <strong>
-            <asp:Label ID="Label1" runat="server" CssClass="auto-style2" Text="Hanger"></asp:Label>
+            <asp:Label ID="Label1" runat="server" CssClass="auto-style2" Text="Hangar"></asp:Label>
             </strong>
         </div>
         <p>
@@ -68,6 +68,7 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style12"></td>
+                <td class="auto-style12">&nbsp;</td>
                 <td class="auto-style12"></td>
                 <td class="auto-style10"></td>
             </tr>
@@ -97,6 +98,8 @@
                     </asp:Panel>
                 </td>
                 <td>
+                    &nbsp;</td>
+                <td>
                     <asp:Panel ID="Panel2" runat="server" GroupingText="DELETE" Width="363px">
                         <br />
                         <br />
@@ -117,6 +120,11 @@
                 </td>
                 <td class="auto-style11">
                     <asp:Panel ID="Panel3" runat="server" GroupingText="UPDATE" Height="283px" Width="414px">
+                        <br />
+                        <br />
+                        <asp:Label ID="Label9" runat="server" Text="Hanger ID:"></asp:Label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:TextBox ID="txtHangerUp" runat="server" OnTextChanged="txtCity0_TextChanged"></asp:TextBox>
                         <br />
                         <br />
                         <asp:Label ID="Label6" runat="server" Text="City ID:"></asp:Label>
@@ -144,6 +152,7 @@
                 </td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td class="auto-style11">&nbsp;</td>
