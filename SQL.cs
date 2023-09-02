@@ -177,7 +177,7 @@ namespace EliteHangers
 
 
                 }
-  
+
             }
             finally
             {
@@ -189,11 +189,11 @@ namespace EliteHangers
 
         }
 
-        public void comboBox(string query,string table, string column, DropDownList combo)
+        public void comboBox(string query, string table, string column, DropDownList combo)
         {
             connectionOpen();
 
-         
+
 
             command = new SqlCommand(query, connection);
 
@@ -201,7 +201,7 @@ namespace EliteHangers
             dataAdapter = new SqlDataAdapter();
 
             dataAdapter.SelectCommand = command;
-            dataAdapter.Fill(ds,table);
+            dataAdapter.Fill(ds, table);
 
             combo.DataSource = ds.Tables[table];
 
@@ -212,7 +212,7 @@ namespace EliteHangers
             connectionClose();
         }
 
-        public void display(string table, string column, GridView datagrid)
+        public void display(string table, GridView datagrid)
         {
             connectionOpen();
 
@@ -235,5 +235,44 @@ namespace EliteHangers
 
         }
 
+        public void insertHanger(int city_id, string name, decimal price)
+        {
+            query = "INSERT INTO Hangar (city_id, name, price)VALUES (@city_id, @name, @price)";
+            //put the parameters in a list
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@city_id", SqlDbType.Int) { Value = city_id },
+                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
+                new SqlParameter("@price", SqlDbType.Money) { Value = price }
+
+            };
+            nonQuery(query);
+        }
+
+
+        public void deleteHanger(int hangar_id)
+        {
+            query = "DELETE FROM Hangar WHERE Hangar_id = @hangar_id";
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@hangar_id", SqlDbType.Int) { Value = hangar_id }
+            };
+            nonQuery(query);
+        }
+
+        public void updateHanger(int city_id, string name, decimal price)
+        {
+            query = $"UPDATE Hangar SET city_id = @city_id, name = @name, price = @price";
+            //put the parameters in a list
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@city_id", SqlDbType.Int) { Value = city_id },
+                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
+                new SqlParameter("@price", SqlDbType.Money) { Value = price }
+
+            };
+            nonQuery(query);
+
+        }
     }
 }

@@ -15,6 +15,9 @@
         .auto-style3 {
             margin-left: 520px;
         }
+        .auto-style4 {
+            height: 26px;
+        }
     </style>
 </head>
 <body>
@@ -30,14 +33,20 @@
             &nbsp;</p>
         <table style="width:100%;">
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:HyperLink ID="HyperLink1" runat="server">User Management </asp:HyperLink>
+                </td>
+                <td>
+                    <asp:HyperLink ID="HyperLink2" runat="server">Hanger Management</asp:HyperLink>
+                </td>
+                <td>
+                    <asp:HyperLink ID="HyperLink3" runat="server">User Management </asp:HyperLink>
+                </td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style4"></td>
+                <td class="auto-style4"></td>
+                <td class="auto-style4"></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -53,12 +62,10 @@
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btnHangMan" runat="server" OnClick="Button1_Click" Text="Hanger Management" />
                     &nbsp;</td>
                 <td class="auto-style2">&nbsp;</td>
                 <td>
-                    <asp:Button ID="btnUserMan" runat="server" OnClick="btnUserMan_Click" Text="User Management" />
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;</td>
