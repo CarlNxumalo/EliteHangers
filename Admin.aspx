@@ -15,6 +15,17 @@
         .auto-style3 {
             margin-left: 520px;
         }
+        .auto-style4 {
+            height: 26px;
+        }
+        .auto-style5 {
+            width: 471px;
+            height: 26px;
+        }
+        .auto-style6 {
+            width: 298px;
+            height: 26px;
+        }
     </style>
 </head>
 <body>
@@ -30,14 +41,20 @@
             &nbsp;</p>
         <table style="width:100%;">
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style4">
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Employee.aspx">Employee Management </asp:HyperLink>
+                </td>
+                <td class="auto-style4">
+                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Hanger.aspx">Hanger Management</asp:HyperLink>
+                </td>
+                <td class="auto-style4">
+                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/City.aspx">City Management </asp:HyperLink>
+                </td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style4"></td>
+                <td class="auto-style4"></td>
+                <td class="auto-style4"></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -53,17 +70,15 @@
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btnHangMan" runat="server" OnClick="Button1_Click" Text="Hanger Management" />
                     &nbsp;</td>
                 <td class="auto-style2">&nbsp;</td>
                 <td>
-                    <asp:Button ID="btnUserMan" runat="server" OnClick="btnUserMan_Click" Text="User Management" />
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style5"></td>
+                <td class="auto-style6"></td>
+                <td class="auto-style4"></td>
             </tr>
         </table>
     </form>
@@ -91,9 +106,9 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td class="auto-style4"></td>
+            <td class="auto-style4"></td>
+            <td class="auto-style4"></td>
         </tr>
         <tr>
             <td>&nbsp;</td>
