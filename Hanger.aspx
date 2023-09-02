@@ -34,24 +34,24 @@
         .auto-style12 {
             height: 26px;
         }
-        .auto-style13 {
-            height: 26px;
-            width: 759px;
-        }
-        .auto-style14 {
-            width: 759px;
-        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="auto-style1">
             <strong>
-            <asp:Label ID="Label1" runat="server" CssClass="auto-style2" Text="Hanger"></asp:Label>
+            <asp:Label ID="Label1" runat="server" CssClass="auto-style2" Text="Hangar"></asp:Label>
             </strong>
         </div>
         <p>
             <table class="auto-style9">
+                <tr>
+                    <td class="auto-style13"><strong>
+                        <asp:HyperLink ID="HyperLink1" runat="server" CssClass="auto-style2" NavigateUrl="~/Admin.aspx">Home</asp:HyperLink>
+                        </strong></td>
+                    <td class="auto-style14"></td>
+                    <td class="auto-style15"></td>
+                </tr>
                 <tr>
                     <td class="auto-style3">&nbsp;</td>
                     <td class="auto-style8">&nbsp;</td>
@@ -74,15 +74,12 @@
         </p>
         <table style="width:100%;">
             <tr>
-                <td class="auto-style12">&nbsp;</td>
-                <td class="auto-style13"></td>
+                <td class="auto-style12"></td>
                 <td class="auto-style12"></td>
                 <td class="auto-style10"></td>
             </tr>
             <tr>
                 <td>
-                    &nbsp;</td>
-                <td class="auto-style14">
                     <asp:Panel ID="Panel1" runat="server" CssClass="auto-style4" GroupingText="INSERT" Width="378px">
                         <br />
                         <br />
@@ -92,7 +89,7 @@
                         <br />
                         <br />
                         <asp:Label ID="Label3" runat="server" Text="Name:"></asp:Label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
                         <br />
                         <br />
@@ -106,6 +103,8 @@
                         <asp:Button ID="btnInsert" runat="server" Text="Insert" Width="130px" OnClick="btnInsert_Click" />
                     </asp:Panel>
                 </td>
+                <td>
+                    &nbsp;</td>
                 <td>
                     <asp:Panel ID="Panel2" runat="server" GroupingText="DELETE" Width="363px">
                         <br />
@@ -127,6 +126,11 @@
                 </td>
                 <td class="auto-style11">
                     <asp:Panel ID="Panel3" runat="server" GroupingText="UPDATE" Height="283px" Width="414px">
+                        <br />
+                        <br />
+                        <asp:Label ID="Label9" runat="server" Text="Hanger ID:"></asp:Label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:TextBox ID="txtHangerUp" runat="server" OnTextChanged="txtCity0_TextChanged"></asp:TextBox>
                         <br />
                         <br />
                         <asp:Label ID="Label6" runat="server" Text="City ID:"></asp:Label>
@@ -154,6 +158,7 @@
                 </td>
             </tr>
             <tr>
+                <td class="auto-style17">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td class="auto-style14">&nbsp;</td>
                 <td>&nbsp;</td>
