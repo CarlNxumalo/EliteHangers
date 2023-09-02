@@ -396,5 +396,47 @@ namespace EliteHangers
 
             return dateList;
         }
+
+        public string nextBooking(string query)
+        {
+            string date = "";
+
+            try
+            {
+                connectionOpen();
+
+                command = new SqlCommand(query, connection);
+
+                dataReader = command.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    //put the dates in the list
+                    date = dataReader.GetDateTime(0).ToString();
+                }
+                else
+                {
+
+                }
+
+
+            }
+            catch (System.Data.SqlTypes.SqlNullValueException)
+            {
+                //data is null return ""
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connectionClose();
+            }
+
+            return date;
+        }
+
     }
 }
