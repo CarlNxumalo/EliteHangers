@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
         }
+        
         #container {
             max-width: 400px;
             margin: 0 auto;
@@ -19,20 +20,25 @@
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+        
         #logo {
             text-align: center;
             margin-bottom: 20px;
         }
+        
         #logo img {
             max-width: 100px;
         }
+        
         .input-group {
             margin-bottom: 15px;
         }
+        
         .input-group label {
             display: block;
             margin-bottom: 5px;
         }
+        
         .input-group input {
             width: 100%;
             padding: 10px;
@@ -40,13 +46,15 @@
             border-radius: 3px;
             font-size: 16px;
         }
+        
         .btn-container {
             text-align: center;
         }
+        
         .btn-container button {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #007bff;
+            background-color: #0000ff; /* Blue color */
             color: #ffffff;
             border: none;
             border-radius: 3px;
@@ -56,7 +64,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-<<<<<<< HEAD
         <div id="container">
             <div id="logo">
                 <img src="path-to-your-logo.png" alt="Elite Hangers Logo" />
@@ -84,6 +91,7 @@
             <div class="btn-container">
                 <asp:Button ID="btnAddCustomer" runat="server" Text="Sign Up" CssClass="btn btn-primary" OnClick="btnAddCustomer_Click" />
             </div>
+        </div>
     </form>
 </body>
 </html>
