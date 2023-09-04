@@ -74,6 +74,7 @@
     <Content Include="Employee.aspx" />
     <Content Include="Hanger.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="Report.aspx" />
     <Content Include="signup.aspx" />
     <Content Include="TestLoginform.aspx" />
     <Content Include="updateprofile.aspx" />
@@ -129,6 +130,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
     </Compile>
     <Compile Include="SQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
