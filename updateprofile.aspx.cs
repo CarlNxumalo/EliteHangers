@@ -13,5 +13,10 @@ namespace EliteHangers
         {
 
         }
+
+        protected void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace EliteHangers
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            sql.display("City", GridView1);
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)

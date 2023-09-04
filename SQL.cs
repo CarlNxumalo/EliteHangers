@@ -124,7 +124,7 @@ namespace EliteHangers
         public UserAuth authenticate(string email, string password)
         {
             int id = 0;
-            int role = 3;
+            int role = 2;
             string name = "";
             string surname = "";
 
@@ -204,7 +204,15 @@ namespace EliteHangers
             dataAdapter.Fill(ds, table);
 
             DataRow blankRow = ds.Tables[table].NewRow();
-            blankRow[column] = ""; // Display an empty string for the blank item
+            try
+            {
+                blankRow[column] = ""; // Display an empty string for the blank item
+            }
+            catch (Exception)
+            {
+                blankRow[column] = 0;
+            }
+             // Display an empty string for the blank item
             ds.Tables[table].Rows.InsertAt(blankRow, 0);
 
             combo.DataSource = ds.Tables[table];
@@ -240,15 +248,15 @@ namespace EliteHangers
 
         }
 
-        public void insertHanger(int city_id, string name, decimal price)
+        public void insertHanger(int city_id , string name, decimal price)
         {
             query = "INSERT INTO Hangar (city_id, name, price)VALUES (@city_id, @name, @price)";
             //put the parameters in a list
             parameters = new List<SqlParameter>
-            {
-                new SqlParameter("@city_id", SqlDbType.Int) { Value = city_id },
+            {          
                 new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
-                new SqlParameter("@price", SqlDbType.Money) { Value = price }
+                new SqlParameter("@price", SqlDbType.Money) { Value = price },
+                new SqlParameter("@city_id", SqlDbType.Int) { Value = city_id }
 
             };
             nonQuery(query);
@@ -306,12 +314,13 @@ namespace EliteHangers
 
         public void updateCity(int city_id, string name)
         {
-            query = $"UPDATE City SET city_id = @city_id, name = @name, price = @price WHERE city_id= @city_id";
+            query = $"UPDATE City SET name = @name WHERE city_id= @city_id";
             //put the parameters in a list
             parameters = new List<SqlParameter>
             {
                 new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
                 new SqlParameter("@city_id", SqlDbType.NVarChar) { Value = city_id }
+
             };
             nonQuery(query);
 
@@ -327,7 +336,7 @@ namespace EliteHangers
                 new SqlParameter("@surname", SqlDbType.NVarChar) { Value = surname },
                 new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
                 new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
-                new SqlParameter("@plane_number", SqlDbType.Int) { Value = role},
+                new SqlParameter("@role", SqlDbType.Int) { Value = role},
             };
             nonQuery(query);
         }
@@ -354,7 +363,7 @@ namespace EliteHangers
                 new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
                 new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
                 new SqlParameter("@role", SqlDbType.Int) { Value = role},
-                new SqlParameter("@role", SqlDbType.Int) { Value = emp_id},
+                new SqlParameter("@employee_id", SqlDbType.Int) { Value = emp_id},
             };
             nonQuery(query);
         }
