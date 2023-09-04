@@ -68,12 +68,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin.aspx" />
+    <Content Include="CancelBooking.aspx" />
     <Content Include="City.aspx" />
     <Content Include="dashboard.aspx" />
     <Content Include="dashboard3.aspx" />
     <Content Include="Employee.aspx" />
     <Content Include="Hanger.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="nav.css" />
+    <Content Include="Report.aspx" />
     <Content Include="signup.aspx" />
     <Content Include="TestLoginform.aspx" />
     <Content Include="updateprofile.aspx" />
@@ -87,6 +90,13 @@
     </Compile>
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CancelBooking.aspx.cs">
+      <DependentUpon>CancelBooking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CancelBooking.aspx.designer.cs">
+      <DependentUpon>CancelBooking.aspx</DependentUpon>
     </Compile>
     <Compile Include="City.aspx.cs">
       <DependentUpon>City.aspx</DependentUpon>
@@ -130,6 +140,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
     </Compile>
     <Compile Include="SQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

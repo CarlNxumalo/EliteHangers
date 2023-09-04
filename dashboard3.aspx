@@ -10,9 +10,22 @@
             width: 508px;
         }
     </style>
+    <link href="nav.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
+        <nav class="header">
+            <ul class="links">
+                <h1>
+                    Elite Hangars
+                </h1>
+            
+                <li class="li_design"><asp:HyperLink class="link" ID="hlhome" runat="server" NavigateUrl="~/dashboard3.aspx">Make Booking</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlMakeBooking" runat="server" NavigateUrl="~/dashboard3.aspx">Cancel</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlCancelBooking" runat="server">Cancel Booking</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlUpdateProfile" runat="server" NavigateUrl="~/updateprofile.aspx">Profile</asp:HyperLink></li>
+            </ul>
+        </nav>
         <table style="width:100%;">
             <tr>
                 <td>&nbsp;</td>
