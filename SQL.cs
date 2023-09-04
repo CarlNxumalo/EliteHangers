@@ -469,8 +469,54 @@ namespace EliteHangers
             {
                 connectionClose();
             }
+
+            
         }
 
+        public void Sum(string table, GridView datagrid, string column)
+        {
+            connectionOpen();
+
+            query = $"SELECT SUM({column}) from {table} ";
+
+            command = new SqlCommand(query, connection);
+
+            ds = new DataSet();
+            dataAdapter = new SqlDataAdapter();
+
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds, table);
+
+            datagrid.DataSource = ds;
+
+            datagrid.DataMember = table;
+
+            datagrid.DataBind();
+            connectionClose();
+        }
+
+
+        public void GroupBy(string table, GridView datagrid, string column1,string column2)
+        {
+            connectionOpen();
+
+            query = $"SELECT  COUNT({column1}), {column2} from {table} GROUp BY {column2} ";
+
+            command = new SqlCommand(query, connection);
+
+            ds = new DataSet();
+            dataAdapter = new SqlDataAdapter();
+
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds, table);
+
+            datagrid.DataSource = ds;
+
+            datagrid.DataMember = table;
+
+            datagrid.DataBind();
+            connectionClose();
+        }
         public void displayDGV(string query, GridView gv, string table)
         {
             try
