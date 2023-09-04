@@ -24,7 +24,8 @@ namespace EliteHangers
 
         protected void btnGroup_Click(object sender, EventArgs e)
         {
-
+            sql.GroupBy("Hangar", GridView1, "city_id", "name");
+            sql.display("Hangar", GridView1);
         }
     }
 }
