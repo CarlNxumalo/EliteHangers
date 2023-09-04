@@ -5,8 +5,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="nav.css" rel="stylesheet" />
 </head>
 <body>
+    <nav class="header">
+            <ul class="links">
+                <h1>
+                    Elite Hangars
+                </h1>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlMakeBooking" runat="server" NavigateUrl="~/dashboard3.aspx">Make Booking</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlCancelBooking" runat="server" NavigateUrl="~/CancelBooking.aspx">Cancel Booking</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlUpdateProfile" runat="server" NavigateUrl="~/updateprofile.aspx">Profile</asp:HyperLink></li>
+            </ul>
+        </nav>
     <form id="form1" runat="server">
         <div>
             <asp:GridView ID="GridView1" runat="server" Height="160px" Width="407px"></asp:GridView>

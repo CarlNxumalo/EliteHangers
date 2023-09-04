@@ -19,10 +19,8 @@
                 <h1>
                     Elite Hangars
                 </h1>
-            
-                <li class="li_design"><asp:HyperLink class="link" ID="hlhome" runat="server" NavigateUrl="~/dashboard3.aspx">Make Booking</asp:HyperLink></li>
-                <li class="li_design"><asp:HyperLink class="link" ID="hlMakeBooking" runat="server" NavigateUrl="~/dashboard3.aspx">Cancel</asp:HyperLink></li>
-                <li class="li_design"><asp:HyperLink class="link" ID="hlCancelBooking" runat="server">Cancel Booking</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlMakeBooking" runat="server" NavigateUrl="~/dashboard3.aspx">Make Booking</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlCancelBooking" runat="server" NavigateUrl="~/CancelBooking.aspx">Cancel Booking</asp:HyperLink></li>
                 <li class="li_design"><asp:HyperLink class="link" ID="hlUpdateProfile" runat="server" NavigateUrl="~/updateprofile.aspx">Profile</asp:HyperLink></li>
             </ul>
         </nav>
@@ -79,6 +77,9 @@
         </table>
         <div>
             <asp:Button ID="btnBook" runat="server" Height="41px" OnClick="btnBook_Click" Text="Book" Width="102px" />
+            <br />
+            <br />
+            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
         </div>
     </form>
 </body>

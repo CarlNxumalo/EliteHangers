@@ -27,7 +27,18 @@ namespace EliteHangers
                 Session["user"] = user;
                 Console.WriteLine("Yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
 
-                Response.Redirect("dashboard3.aspx");
+                if(user.role == 2)//customer
+                {
+                    Response.Redirect("dashboard3.aspx");
+                }
+                if (user.role == 1)//manager
+                {
+                    Response.Redirect("Report.aspx");
+                }
+                else//employee 0
+                {
+                    
+                }
             }
             else
             {
