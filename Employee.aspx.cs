@@ -12,7 +12,7 @@ namespace EliteHangers
         SQL sql = new SQL();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            sql.display("Employee", GridView1);
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
