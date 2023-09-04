@@ -28,7 +28,7 @@
             <asp:Label ID="Label5" runat="server" Text="Plane: "></asp:Label>
             <asp:TextBox ID="txtPlaneNumber" runat="server"></asp:TextBox>
         </div>
-        <asp:Button ID="btnAddCustomer" runat="server" Text="Update Info" Height="41px" Width="107px" OnClick="btnAddCustomer_Click" />
+        <asp:Button ID="btnUpdateInfo" runat="server" Text="Update Info" Height="41px" Width="107px" OnClick="btnAddCustomer_Click" />
     </form>
 </body>
 </html>
