@@ -44,8 +44,6 @@ namespace EliteHangers
             {
                 //error message lbl 
                 lblerror.Text = "User email or password is incorrect";
-                Response.Redirect("signup.aspx");
-
             }
         }
 

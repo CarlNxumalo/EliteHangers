@@ -42,7 +42,8 @@ namespace EliteHangers
         {
             if (txtEmail.Text != null)
             {
-                sql.updateCustomer(, txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, txtPlaneNumber.Text);
+
+                sql.updateCustomer(user.id, txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, txtPlaneNumber.Text);
             }
         }
 

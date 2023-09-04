@@ -83,6 +83,8 @@
             
             <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn-login" OnClick="btnLogin_Click" />
             <asp:Label ID="lblerror" runat="server" CssClass="error-message"></asp:Label>
+            <br /> <br />
+            <asp:HyperLink ID="hlSignUp" runat="server" NavigateUrl="~/signup.aspx">Sign Up</asp:HyperLink>
         </div>
     </form>
 </body>
