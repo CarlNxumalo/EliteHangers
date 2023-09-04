@@ -23,10 +23,7 @@
         }
         .auto-style6 {
             height: 26px;
-            width: 349px;
-        }
-        .auto-style7 {
-            width: 349px;
+            width: 567px;
         }
         .auto-style8 {
             width: 349px;
@@ -34,25 +31,49 @@
         }
         .auto-style10 {
             height: 26px;
-            width: 135px;
+            width: 60px;
         }
         .auto-style11 {
-            width: 135px;
+            width: 60px;
             height: 74px;
         }
         .auto-style12 {
-            width: 135px;
+            width: 60px;
         }
         .auto-style13 {
             height: 26px;
-            width: 152px;
+            width: 57px;
         }
         .auto-style14 {
-            width: 152px;
+            width: 57px;
             height: 74px;
         }
         .auto-style15 {
-            width: 152px;
+            width: 57px;
+        }
+        .auto-style16 {
+            width: 567px;
+            height: 74px;
+        }
+        .auto-style17 {
+            width: 567px;
+        }
+        .auto-style18 {
+            width: 100%;
+        }
+        .auto-style19 {
+            height: 26px;
+            width: 2252px;
+        }
+        .auto-style20 {
+            width: 2252px;
+            height: 74px;
+        }
+        .auto-style21 {
+            width: 2252px;
+        }
+        .auto-style22 {
+            margin-right: 0px;
         }
     </style>
 </head>
@@ -90,26 +111,28 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
-        <table style="width:100%;">
+        <table class="auto-style18">
             <tr>
                 <td class="auto-style6"></td>
                 <td class="auto-style10"></td>
                 <td class="auto-style5"></td>
                 <td class="auto-style13">&nbsp;</td>
-                <td class="auto-style5"></td>
+                <td class="auto-style19"></td>
             </tr>
             <tr>
-                <td class="auto-style8">
+                <td class="auto-style16">
                     <br />
                     <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Panel ID="Panel1" runat="server" GroupingText="INSERT">
+                    <asp:Panel ID="Panel1" runat="server" GroupingText="INSERT" Width="509px">
                         &nbsp;&nbsp;
                         <br />
                         &nbsp;&nbsp;
                         <asp:Label ID="Label2" runat="server" Text="Name:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+                        &nbsp;&nbsp;&nbsp;
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtName" ErrorMessage="Enter correct name"></asp:RequiredFieldValidator>
                         <br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -122,18 +145,20 @@
                     <br />
                     <br />
                 </td>
-                <td class="auto-style11"></td>
+                <td class="auto-style11">&nbsp;</td>
                 <td class="auto-style8">
                     <br />
                     <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Panel ID="Panel2" runat="server" GroupingText="DELETE">
+                    <asp:Panel ID="Panel2" runat="server" GroupingText="DELETE" Width="492px">
                         &nbsp;&nbsp;
                         <br />
                         &nbsp;&nbsp;
                         <asp:Label ID="Label3" runat="server" Text="City ID:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>
+                        &nbsp;&nbsp;&nbsp;
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtCity" ErrorMessage="Enter correct city id"></asp:RequiredFieldValidator>
                         <br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -147,23 +172,29 @@
                     <br />
                 </td>
                 <td class="auto-style14">&nbsp;</td>
-                <td class="auto-style8">
+                <td class="auto-style20">
                     <br />
                     <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Panel ID="Panel3" runat="server" GroupingText="UPDATE">
+                    <asp:Panel ID="Panel3" runat="server" GroupingText="UPDATE" CssClass="auto-style22" Width="518px">
                         &nbsp;&nbsp;
                         <br />
                         &nbsp;&nbsp;
                         <asp:Label ID="Label5" runat="server" Text="City ID:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;
                         <asp:TextBox ID="txtCityUp" runat="server"></asp:TextBox>
+                        &nbsp;
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtCityUp" ErrorMessage="Enter correct city id"></asp:RequiredFieldValidator>
+&nbsp;
                         <br />
                         <br />
                         &nbsp;&nbsp;
                         <asp:Label ID="Label4" runat="server" Text="Name:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:TextBox ID="txtNameUp" runat="server"></asp:TextBox>
+                        &nbsp;&nbsp;
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtNameUp" ErrorMessage="Enter correct name"></asp:RequiredFieldValidator>
+&nbsp;
                         <br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -178,11 +209,11 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style7">&nbsp;</td>
+                <td class="auto-style17">&nbsp;</td>
                 <td class="auto-style12">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td class="auto-style15">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style21">&nbsp;</td>
             </tr>
         </table>
     </form>
