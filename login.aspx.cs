@@ -24,19 +24,15 @@ namespace EliteHangers
             user = AuthenticateUser(txtEmail.Text, txtPassword.Text);
             if (user != null)
             {
-                Session["name"] = user.name;
-                Session["surname"] = user.surname;
-                Session["id"] = user.id;
-                Session["role"] = user.role;
+                Session["user"] = user;
                 Console.WriteLine("Yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
 
-                Response.Redirect("dashboard.aspx");
+                Response.Redirect("dashboard3.aspx");
             }
-            else//null means not a user
+            else
             {
                 //error message lbl 
-
-                lblerror.Text = "it is null";
+                lblerror.Text = "User email or password is incorrect";
             }
         }
 

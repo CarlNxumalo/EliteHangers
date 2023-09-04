@@ -400,5 +400,73 @@ namespace EliteHangers
 
             return dateList;
         }
+
+        public string nextBooking(string query)
+        {
+            string date = "";
+
+            try
+            {
+                connectionOpen();
+
+                command = new SqlCommand(query, connection);
+
+                dataReader = command.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    //put the dates in the list
+                    date = dataReader.GetDateTime(0).ToString();
+                }
+                else
+                {
+
+                }
+
+
+            }
+            catch (System.Data.SqlTypes.SqlNullValueException)
+            {
+                //data is null return ""
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connectionClose();
+            }
+
+            return date;
+        }
+
+        public void insertBooking(int customer_id, int hangar_id, DateTime date_start, DateTime date_end)
+        {
+            try
+            {
+                query = "INSERT INTO Booking (customer_id, hangar_id, date_start, date_end, status) VALUES (@customer_id, @hangar_id, @date_start, @date_end, @status)";
+                //put the parameters in a list
+                parameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@customer_id", SqlDbType.NVarChar) { Value = customer_id},
+                    new SqlParameter("@hangar_id", SqlDbType.NVarChar) { Value = hangar_id },
+                    new SqlParameter("@date_start", SqlDbType.NVarChar) { Value = date_start },
+                    new SqlParameter("@date_end", SqlDbType.NVarChar) { Value = date_end },
+                    new SqlParameter("@status", SqlDbType.Int) { Value = 1},
+                };
+                nonQuery(query);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connectionClose();
+            }
+        }
+
     }
 }

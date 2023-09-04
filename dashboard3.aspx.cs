@@ -25,21 +25,29 @@ namespace EliteHangers
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            if (!IsPostBack)
+            
+            if (Session["user"] != null)
             {
-                query = "SELECT DISTINCT name, city_id FROM City";
-                sql.comboBox(query, "City", "name", DropDownList1, "city_id");
+                if (!IsPostBack)
+                {
+                    query = "SELECT DISTINCT name, city_id FROM City";
+                    sql.comboBox(query, "City", "name", DropDownList1, "city_id");
 
-                query = $"SELECT * FROM Hangar ";
-                sql.comboBox(query, "Hangar", "name", DropDownList2, "hangar_id");
-                //CalendarStart.SelectedDate = DateTime.Today;
-                DropDownList2.SelectedIndex = -1;
-                Session["hangarID"] = null;
-                Session["startDate"] = null;
-                Session["endDate"] = null;
-                Session["customerId"] = null;
+                    query = $"SELECT * FROM Hangar ";
+                    sql.comboBox(query, "Hangar", "name", DropDownList2, "hangar_id");
+                    //CalendarStart.SelectedDate = DateTime.Today;
+
+                    DropDownList2.SelectedIndex = -1;
+                    Session["hangarID"] = null;
+                    Session["startDate"] = null;
+                    Session["endDate"] = null;
+                    Session["customerId"] = null;
+                }
             }
-
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,6 +78,12 @@ namespace EliteHangers
             //check if sc1 is not null
             //check if sc2 is not null
             //then insert into db
+            /*
+            if (Session["hangarID"] != null && )
+            {
+
+            }
+            */
         }
 
         protected void CalendarStart_SelectionChanged(object sender, EventArgs e)
