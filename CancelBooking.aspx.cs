@@ -24,9 +24,14 @@ namespace EliteHangers
                         sql.comboBox(query, "Booking", "booking_id", ddlBookingID, "booking_id");
                     }
                 }
-                else if(user.role == 1)
+                else if(user.role == 0)
                 {
-                    
+                    //manager
+
+                }
+                else
+                {
+                    //employee clerk
                 }
                 
             }
@@ -50,9 +55,9 @@ namespace EliteHangers
                 //set booking to 2
 
             }
-            catch
+            catch(Exception ex)
             {
-
+                lblError.Text = ex.Message;
             }
         }
     }
