@@ -49,7 +49,7 @@ namespace EliteHangers
                         Session["customerId"] = null;
                     }
                 }
-                else if (user.role == 0)
+                else if (user.role == 1)
                 {
                     //manager
                     Response.Redirect("Admin.aspx");
