@@ -29,11 +29,10 @@ namespace EliteHangers
 
                 Response.Redirect("dashboard3.aspx");
             }
-            else//null means not a user
+            else
             {
                 //error message lbl 
-
-                lblerror.Text = "it is null";
+                lblerror.Text = "User email or password is incorrect";
             }
         }
 
