@@ -26,7 +26,7 @@
             <tr>
                 <td>&nbsp;</td>
                 <td class="auto-style1">
-                    <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                    <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" Width="116px" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
@@ -41,11 +41,11 @@
             <tr>
                 <td>&nbsp;</td>
                 <td class="auto-style1">
-                    <asp:Calendar ID="CalendarStart" runat="server"></asp:Calendar>
+                    <asp:Calendar ID="CalendarStart" runat="server" OnDayRender="CalendarStart_DayRender" OnSelectionChanged="CalendarStart_SelectionChanged" ValidateRequestMode="Enabled"></asp:Calendar>
                 </td>
                 <td>&nbsp;</td>
                 <td>
-                    <asp:Calendar ID="CalendarEnd" runat="server"></asp:Calendar>
+                    <asp:Calendar ID="CalendarEnd" runat="server" OnDayRender="CalendarEnd_DayRender" OnSelectionChanged="CalendarEnd_SelectionChanged"></asp:Calendar>
                 </td>
             </tr>
             <tr>
@@ -65,6 +65,7 @@
             </tr>
         </table>
         <div>
+            <asp:Button ID="btnBook" runat="server" Height="41px" OnClick="btnBook_Click" Text="Book" Width="102px" />
         </div>
     </form>
 </body>
