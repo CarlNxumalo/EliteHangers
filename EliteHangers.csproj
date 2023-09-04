@@ -78,6 +78,7 @@
     <Content Include="TestLoginform.aspx" />
     <Content Include="updateprofile.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WhatsApp Image 2023-09-04 at 15.22.26.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.aspx.cs">
