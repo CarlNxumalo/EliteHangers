@@ -124,7 +124,7 @@ namespace EliteHangers
         public UserAuth authenticate(string email, string password)
         {
             int id = 0;
-            int role = 3;
+            int role = 2;
             string name = "";
             string surname = "";
 
@@ -204,7 +204,15 @@ namespace EliteHangers
             dataAdapter.Fill(ds, table);
 
             DataRow blankRow = ds.Tables[table].NewRow();
-            blankRow[column] = ""; // Display an empty string for the blank item
+            try
+            {
+                blankRow[column] = ""; // Display an empty string for the blank item
+            }
+            catch (Exception)
+            {
+                blankRow[column] = 0;
+            }
+             // Display an empty string for the blank item
             ds.Tables[table].Rows.InsertAt(blankRow, 0);
 
             combo.DataSource = ds.Tables[table];

@@ -90,6 +90,9 @@ namespace EliteHangers
         {
             Session["sc2"] = true;
             Session["sc1Date"] = CalendarStart.SelectedDate;
+
+            //show user selected date
+            lblStartDate.Text = CalendarStart.SelectedDate.ToString("d");
         }
 
         protected void CalendarStart_DayRender(object sender, DayRenderEventArgs e)
@@ -165,6 +168,7 @@ namespace EliteHangers
         protected void CalendarEnd_SelectionChanged(object sender, EventArgs e)
         {
             Session["sc2Date"] = CalendarEnd.SelectedDate;
+            lblEndDate.Text = CalendarEnd.SelectedDate.ToString("d");
         }
 
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
