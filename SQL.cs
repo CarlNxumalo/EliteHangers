@@ -473,5 +473,36 @@ namespace EliteHangers
             }
         }
 
+        public void displayDGV(string query, GridView gv, string table)
+        {
+            try
+            {
+                connectionOpen();
+
+                command = new SqlCommand(query, connection);
+
+                ds = new DataSet();
+                dataAdapter = new SqlDataAdapter();
+
+                dataAdapter.SelectCommand = command;
+                dataAdapter.Fill(ds, table);
+
+                gv.DataSource = ds;
+
+                gv.DataMember = table;
+
+                gv.DataBind();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connectionClose();
+            }
+        }
+
     }
 }
