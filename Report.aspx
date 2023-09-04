@@ -59,21 +59,21 @@
                     <asp:Label ID="Label2" runat="server" Text="Group by City ID:"></asp:Label>
                     <br />
                     <br />
-                    <asp:Button ID="btnGroup" runat="server" Text="Group by" Width="133px" />
+                    <asp:Button ID="btnGroup" runat="server" Text="Group by" Width="133px" OnClick="btnGroup_Click" />
                     <br />
                 </td>
                 <td class="auto-style5">
                     <asp:Label ID="Label3" runat="server" Text="Total amount for transaction:"></asp:Label>
                     <br />
                     <br />
-                    <asp:Button ID="Button2" runat="server" Text="btnTotal" Width="133px" />
+                    <asp:Button ID="btnTotal" runat="server" Text="Total" Width="133px" OnClick="btnTotal_Click" />
                     <br />
                 </td>
                 <td>
                     <asp:Label ID="Label4" runat="server" Text="Average days of stay:"></asp:Label>
                     <br />
                     <br />
-                    <asp:Button ID="Button3" runat="server" Text="Button" Width="133px" />
+                    <asp:Button ID="btnAverage" runat="server" Text="Average" Width="133px" />
                     <br />
                 </td>
             </tr>

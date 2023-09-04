@@ -471,6 +471,37 @@ namespace EliteHangers
             {
                 connectionClose();
             }
+
+            
+        }
+
+        public void groupBy(int city_id, int dee, string table)
+        {
+
+
+
+        }
+
+        public void Sum(string table, GridView datagrid, string column)
+        {
+            connectionOpen();
+
+            query = $"SELECT * SUM({column}) from {table} ";
+
+            command = new SqlCommand(query, connection);
+
+            ds = new DataSet();
+            dataAdapter = new SqlDataAdapter();
+
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds, table);
+
+            datagrid.DataSource = ds;
+
+            datagrid.DataMember = table;
+
+            datagrid.DataBind();
+            connectionClose();
         }
 
     }
