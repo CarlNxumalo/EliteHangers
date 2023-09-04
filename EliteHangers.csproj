@@ -70,6 +70,7 @@
     <Content Include="Admin.aspx" />
     <Content Include="CancelBooking.aspx" />
     <Content Include="City.aspx" />
+    <Content Include="Clerk.aspx" />
     <Content Include="dashboard.aspx" />
     <Content Include="dashboard3.aspx" />
     <Content Include="Employee.aspx" />
@@ -103,6 +104,13 @@
     </Compile>
     <Compile Include="City.aspx.designer.cs">
       <DependentUpon>City.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clerk.aspx.cs">
+      <DependentUpon>Clerk.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clerk.aspx.designer.cs">
+      <DependentUpon>Clerk.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs" />
     <Compile Include="dashboard.aspx.cs">

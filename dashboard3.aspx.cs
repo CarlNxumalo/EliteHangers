@@ -21,6 +21,7 @@ namespace EliteHangers
         DateTime dtStart;
         DateTime dtEnd;
         DateTime dt;
+        UserAuth user;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,20 +29,35 @@ namespace EliteHangers
             
             if (Session["user"] != null)
             {
-                if (!IsPostBack)
+                user = (UserAuth) Session["user"];
+                
+                if (user.role == 2)//customer
                 {
-                    query = "SELECT DISTINCT name, city_id FROM City";
-                    sql.comboBox(query, "City", "name", DropDownList1, "city_id");
+                    if (!IsPostBack)
+                    {
+                        query = "SELECT DISTINCT name, city_id FROM City";
+                        sql.comboBox(query, "City", "name", DropDownList1, "city_id");
 
-                    query = $"SELECT * FROM Hangar ";
-                    sql.comboBox(query, "Hangar", "name", DropDownList2, "hangar_id");
-                    //CalendarStart.SelectedDate = DateTime.Today;
+                        query = $"SELECT * FROM Hangar ";
+                        sql.comboBox(query, "Hangar", "name", DropDownList2, "hangar_id");
+                        //CalendarStart.SelectedDate = DateTime.Today;
 
-                    DropDownList2.SelectedIndex = -1;
-                    Session["hangarID"] = null;
-                    Session["startDate"] = null;
-                    Session["endDate"] = null;
-                    Session["customerId"] = null;
+                        DropDownList2.SelectedIndex = -1;
+                        Session["hangarID"] = null;
+                        Session["startDate"] = null;
+                        Session["endDate"] = null;
+                        Session["customerId"] = null;
+                    }
+                }
+                else if (user.role == 0)
+                {
+                    //manager
+                    Response.Redirect("Admin.aspx");
+                }
+                else
+                {
+                    //employee clerk
+                    Response.Redirect("Clerk.aspx");
                 }
             }
             else
@@ -78,12 +94,19 @@ namespace EliteHangers
             //check if sc1 is not null
             //check if sc2 is not null
             //then insert into db
-            /*
-            if (Session["hangarID"] != null && )
+            
+            if (Session["hangarID"] != null && Session["sc1"] != null && Session["sc2"] != null)
             {
-
+                sql.insertBooking(user.id, int.Parse(Session["hangarID"].ToString()), DateTime.Parse(Session["sc1Date"].ToString()), DateTime.Parse(Session["sc2Date"].ToString()));
+                Session["hangarID"] = null;
+                Session["sc1"] = null;
+                Session["sc2"] = null;
             }
-            */
+            else
+            {
+                lblError.Text = "Please select hangar, start date amd end date";
+            }
+            
         }
 
         protected void CalendarStart_SelectionChanged(object sender, EventArgs e)

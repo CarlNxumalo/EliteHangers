@@ -16,7 +16,7 @@ namespace EliteHangers
             if (Session["user"] == null)
             {
                 UserAuth user = (UserAuth)Session["user"];
-                if (user.role == 3)//customer
+                if (user.role == 2)//customer
                 {
                     if (!IsPostBack)
                     {
@@ -24,13 +24,14 @@ namespace EliteHangers
                         sql.comboBox(query, "Booking", "booking_id", ddlBookingID, "booking_id");
                     }
                 }
-                else if(user.role == 0)
+                else if(user.role == 1)
                 {
                     //manager
 
                 }
                 else
                 {
+                    //0
                     //employee clerk
                 }
                 

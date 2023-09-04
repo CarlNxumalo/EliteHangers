@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="nav.css" rel="stylesheet" />
     <style type="text/css">
         .auto-style1 {
             width: 471px;
@@ -29,7 +30,20 @@
     </style>
 </head>
 <body>
+    <nav class="header">
+            <ul class="links">
+                <h1>
+                    Elite Hangars
+                </h1>
+            
+                <li class="li_design"><asp:HyperLink class="link" ID="hlEmployee" runat="server" NavigateUrl="~/Employee.aspx">Employee Managemnt</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlHangar" runat="server" NavigateUrl="~/Hanger.aspx">Hangar Management</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlCity" runat="server" NavigateUrl="~/City.aspx">City Management</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlReports" runat="server" NavigateUrl="~/Report.aspx">Reports</asp:HyperLink></li>
+            </ul>
+    </nav>
     <form id="form1" runat="server">
+
         <div>
             <p class="auto-style3">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Admin<br />

@@ -124,7 +124,7 @@ namespace EliteHangers
         public UserAuth authenticate(string email, string password)
         {
             int id = 0;
-            int role = 2;
+            int role = 2; //customer
             string name = "";
             string surname = "";
 
@@ -132,7 +132,7 @@ namespace EliteHangers
             string emailDB = "";
             //return true if successfull
             query =
-            "SELECT customer_id, name, surname, email, password, NULL as role " +
+            "SELECT customer_id, name, surname, email, password, 5 as role " +
             "FROM Customer WHERE email = @email AND password = @password " +
             "UNION ALL " +
             "SELECT employee_id, name, surname, email, password, role " +
@@ -166,15 +166,13 @@ namespace EliteHangers
                     {
                         //match
                         id = int.Parse(dataReader.GetValue(0).ToString());
-                        if (dataReader.GetValue(5) != null)
+                        if (dataReader.GetInt32(5) != 5)
                         {
                             role = int.Parse(dataReader.GetValue(5).ToString());
                         }
-                        obj = new UserAuth(role, name, surname, id);
+                        obj = new UserAuth(role, dataReader.GetValue(1).ToString(), dataReader.GetValue(2).ToString(), id);
 
                     }
-
-
 
                 }
 
