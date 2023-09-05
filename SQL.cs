@@ -476,7 +476,7 @@ namespace EliteHangers
         public void Sum(string table, GridView datagrid, string column)
         {
             connectionOpen();
-
+            query = "select sum("+column+") from ';
             query = $"SELECT SUM({column}) from {table} ";
 
             command = new SqlCommand(query, connection);
