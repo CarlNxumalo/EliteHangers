@@ -10,10 +10,29 @@ namespace EliteHangers
     public partial class Report : System.Web.UI.Page
     {
         SQL sql = new SQL();
-
+        UserAuth user;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            if (Session["user"] != null)
+            {
+                user = (UserAuth) Session["user"];
 
+                if (user.role == 2)//customer
+                {
+                    Response.Redirect("dashboard3.aspx");
+                }
+                if (user.role == 0)//employee
+                {
+                    Response.Redirect("Clerk.aspx");
+                }
+                
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+            
         }
 
         protected void btnTotal_Click(object sender, EventArgs e)

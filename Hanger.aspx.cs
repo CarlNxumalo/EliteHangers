@@ -10,9 +10,28 @@ namespace EliteHangers
     public partial class Hanger : System.Web.UI.Page
     {
         SQL sql = new SQL();
+        UserAuth user;
         string query;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] != null)
+            {
+                user = (UserAuth)Session["user"];
+
+                if (user.role == 2)//customer
+                {
+                    Response.Redirect("dashboard3.aspx");
+                }
+                if (user.role == 0)//employee
+                {
+                    Response.Redirect("Clerk.aspx");
+                }
+
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
             if (!IsPostBack)
             {
                 query = "SELECT name, city_id FROM City;";

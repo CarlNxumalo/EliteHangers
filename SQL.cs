@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Collections;
 
 //
 namespace EliteHangers
@@ -447,36 +448,24 @@ namespace EliteHangers
 
         public void insertBooking(int customer_id, int hangar_id, DateTime date_start, DateTime date_end)
         {
-            try
+            query = "INSERT INTO Booking (customer_id, hangar_id, date_start, date_end, status) VALUES (@customer_id, @hangar_id, @date_start, @date_end, @status)";
+            //put the parameters in a list
+            parameters = new List<SqlParameter>
             {
-                query = "INSERT INTO Booking (customer_id, hangar_id, date_start, date_end, status) VALUES (@customer_id, @hangar_id, @date_start, @date_end, @status)";
-                //put the parameters in a list
-                parameters = new List<SqlParameter>
-                {
-                    new SqlParameter("@customer_id", SqlDbType.NVarChar) { Value = customer_id},
-                    new SqlParameter("@hangar_id", SqlDbType.NVarChar) { Value = hangar_id },
-                    new SqlParameter("@date_start", SqlDbType.NVarChar) { Value = date_start },
-                    new SqlParameter("@date_end", SqlDbType.NVarChar) { Value = date_end },
-                    new SqlParameter("@status", SqlDbType.Int) { Value = 1},
-                };
-                nonQuery(query);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                connectionClose();
-            }
-
+                new SqlParameter("@customer_id", SqlDbType.Int) { Value = customer_id},
+                new SqlParameter("@hangar_id", SqlDbType.Int) { Value = hangar_id },
+                new SqlParameter("@date_start", SqlDbType.DateTime) { Value = date_start },
+                new SqlParameter("@date_end", SqlDbType.DateTime) { Value = date_end },
+                new SqlParameter("@status", SqlDbType.Int) { Value = 1},
+            };
+            nonQuery(query);
             
         }
 
         public void Sum(string table, GridView datagrid, string column)
         {
             connectionOpen();
-            query = "select sum("+column+") from ';
+
             query = $"SELECT SUM({column}) from {table} ";
 
             command = new SqlCommand(query, connection);
@@ -546,6 +535,53 @@ namespace EliteHangers
             {
                 connectionClose();
             }
+        }
+
+        public void recordTransaction(int booking_id, decimal amount, int type)
+        {
+            query = "INSERT INTO [Transaction] (booking_id, date, amount, type) VALUES (@booking_id, @date, @amount, @type)";
+            //put the parameters in a list
+            parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@booking_id", SqlDbType.Int) { Value = booking_id},
+                new SqlParameter("@date", SqlDbType.DateTime) { Value = DateTime.Today.Date},
+                new SqlParameter("@amount", SqlDbType.Decimal) { Value = amount },
+                new SqlParameter("@type", SqlDbType.Int) { Value = type }
+            };
+            nonQuery(query);
+        }
+
+        public ArrayList bookingID(int user_id)
+        {
+            ArrayList list = new ArrayList();
+            try
+            {
+                query = "SELECT TOP 1 booking_id,  CAST(DATEDIFF(day, date_start, date_end)*Hangar.price AS money) As amount FROM Booking INNER JOIN Hangar ON Booking.hangar_id = Hangar.hangar_id WHERE Booking.customer_id = 1 ORDER BY booking_id DESC; ";
+                parameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@user_id", SqlDbType.Int) { Value = user_id}
+                };
+
+                connectionOpen();
+                command = new SqlCommand(query, connection);
+                dataReader = command.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    list.Add(dataReader.GetInt32(0));
+                    list.Add(dataReader.GetDecimal(1));
+                }
+                dataReader.Close();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connectionClose();
+            }
+            return list;
         }
 
     }

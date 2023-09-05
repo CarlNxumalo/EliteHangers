@@ -70,12 +70,12 @@
     <Content Include="CancelBooking.aspx" />
     <Content Include="City.aspx" />
     <Content Include="Clerk.aspx" />
-    <Content Include="dashboard.aspx" />
     <Content Include="dashboard3.aspx" />
     <Content Include="Employee.aspx" />
     <Content Include="Hanger.aspx" />
     <Content Include="login.aspx" />
     <Content Include="nav.css" />
+    <Content Include="Receipt.aspx" />
     <Content Include="Report.aspx" />
     <Content Include="signup.aspx" />
     <Content Include="TestLoginform.aspx" />
@@ -106,13 +106,6 @@
       <DependentUpon>Clerk.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs" />
-    <Compile Include="dashboard.aspx.cs">
-      <DependentUpon>dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="dashboard.aspx.designer.cs">
-      <DependentUpon>dashboard.aspx</DependentUpon>
-    </Compile>
     <Compile Include="dashboard3.aspx.cs">
       <DependentUpon>dashboard3.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -140,6 +133,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Receipt.aspx.cs">
+      <DependentUpon>Receipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Receipt.aspx.designer.cs">
+      <DependentUpon>Receipt.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>

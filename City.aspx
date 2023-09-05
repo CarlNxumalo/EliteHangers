@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="nav.css" rel="stylesheet" />
     <style type="text/css">
         .auto-style1 {
             text-align: center;
@@ -78,6 +79,16 @@
     </style>
 </head>
 <body>
+    <nav class="header">
+        <ul class="links">
+                <h1>
+                    Elite Hangars
+                </h1>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlMakeBooking" runat="server" NavigateUrl="~/Report.aspx">Report</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlCancelBooking" runat="server" NavigateUrl="~/City.aspx">Maintain City</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlUpdateProfile" runat="server" NavigateUrl="~/Hanger.aspx">Maintain Hangar</asp:HyperLink></li>
+            </ul>
+        </nav>
     <form id="form1" runat="server">
         <div class="auto-style1">
             <strong>
@@ -86,9 +97,7 @@
         </div>
         <table style="width:100%;">
             <tr>
-                <td class="auto-style3"><strong>
-                    <asp:HyperLink ID="HyperLink1" runat="server" CssClass="auto-style2" NavigateUrl="~/Admin.aspx">Home</asp:HyperLink>
-                    </strong></td>
+                <td class="auto-style3">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>

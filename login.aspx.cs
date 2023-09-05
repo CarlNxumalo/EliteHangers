@@ -37,7 +37,7 @@ namespace EliteHangers
                 }
                 else//employee 0
                 {
-                    
+                    Response.Redirect("Clerk.aspx");
                 }
             }
             else

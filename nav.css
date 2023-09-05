@@ -32,3 +32,43 @@
 .li_design {
     box-sizing: border-box;
 }
+
+.Transaction {
+    width: 35%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.item {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-items: center;
+}
+
+.detail {
+    flex: 1;
+    margin: auto auto;
+}
+
+.value {
+    flex: 1;
+}
+
+.button {
+    width: 55%;
+    background-color: gray;
+    color: white;
+    font-size: larger;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+}
+

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -98,9 +99,23 @@ namespace EliteHangers
             if (Session["hangarID"] != null && Session["sc1"] != null && Session["sc2"] != null)
             {
                 sql.insertBooking(user.id, int.Parse(Session["hangarID"].ToString()), DateTime.Parse(Session["sc1Date"].ToString()), DateTime.Parse(Session["sc2Date"].ToString()));
+                //
+                ArrayList list = sql.bookingID(user.id);
+                    // Use bookingId and amount for your transaction logic
+                sql.recordTransaction((int)list[0], (decimal)list[1], 1);
+
+                Session["CityName"] = DropDownList1.SelectedItem;
+                Session["HangarName"] = DropDownList2.SelectedItem;
+                Session["Amount"] = (decimal)list[1];
+                Session["DateStart"] = CalendarStart.SelectedDate.ToString("D");
+                Session["DateEnd"] = CalendarEnd.SelectedDate.ToString("D");
+                Session["TotalDays"] = CalendarEnd.SelectedDate - CalendarStart.SelectedDate;
+
+
                 Session["hangarID"] = null;
                 Session["sc1"] = null;
                 Session["sc2"] = null;
+                Response.Redirect("Receipt.aspx");
             }
             else
             {
