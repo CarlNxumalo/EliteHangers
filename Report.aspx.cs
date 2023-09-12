@@ -13,38 +13,60 @@ namespace EliteHangers
         UserAuth user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if (Session["user"] != null)
+            try
             {
-                user = (UserAuth) Session["user"];
+                 if (Session["user"] != null)
+                {
+                    user = (UserAuth) Session["user"];
 
-                if (user.role == 2)//customer
-                {
+                 if (user.role == 2)//customer
+                 {
                     Response.Redirect("dashboard3.aspx");
-                }
-                if (user.role == 0)//employee
-                {
+                 }
+                 if (user.role == 0)//employee
+                 {
                     Response.Redirect("Clerk.aspx");
+                 }
                 }
-                
-            }
-            else
-            {
+             
+             else
+             {
                 Response.Redirect("Login.aspx");
+             }
             }
-            
+
+            catch (Exception)
+            {
+                //insert error message here.
+            }
         }
 
         protected void btnTotal_Click(object sender, EventArgs e)
         {
-            sql.Sum("Transaction", GridView1, "amount");
-            sql.display("Transaction", GridView1);
+            try
+            {
+             sql.Sum("Transaction", GridView1, "amount");
+             sql.display("Transaction", GridView1);
+            }
+            catch (Exception)
+            {
+                //insert error message here.
+            }
+          
         }
 
         protected void btnGroup_Click(object sender, EventArgs e)
         {
-            sql.GroupBy("Hangar", GridView1, "city_id", "name");
-            sql.display("Hangar", GridView1);
+            try
+            {
+             sql.GroupBy("Hangar", GridView1, "city_id", "name");
+             sql.display("Hangar", GridView1);
+            }
+            catch (Exception)
+            {
+                //insert error message here.
+            }
+            
         }
     }
 }

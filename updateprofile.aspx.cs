@@ -13,47 +13,67 @@ namespace EliteHangers
         UserAuth user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] != null)
+            try
             {
-                user = (UserAuth)Session["user"];
-
-                if (user.role == 2)//customer
+                 if (Session["user"] != null)
                 {
                     
-                }
-                else if (user.role == 0)
-                {
+                 user = (UserAuth)Session["user"];
+
+                 if (user.role == 2)//customer
+                 {
+                    
+                 }
+                 else if (user.role == 0)
+                  {
                     //manager
                     Response.Redirect("Admin.aspx");
-                }
-                else
-                {
+                  }
+                 else
+                  {
                     //employee clerk
                     Response.Redirect("Clerk.aspx");
-                }
-            }
-            else
-            {
+                  }
+                 }
+             
+             else
+             {
                 Response.Redirect("Login.aspx");
+             }
             }
+            catch (Exception)
+            {
+                //error message here.
+            }
+           
         }
 
         protected void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            if (txtEmail.Text != null)
+            try
             {
-
-                sql.updateCustomer(user.id, txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, txtPlaneNumber.Text);
+                  if (txtEmail.Text != null)
+                  {
+                     sql.updateCustomer(user.id, txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, txtPlaneNumber.Text);
+                  }
             }
+          
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
         {
-            txtName.Text = "";
-            txtSurname.Text = "";
-            txtEmail.Text = "";
-            txtPassword.Text = "";
-            txtPlaneNumber.Text = "";
+            try
+            {
+             txtName.Text = "";
+             txtSurname.Text = "";
+             txtEmail.Text = "";
+             txtPassword.Text = "";
+             txtPlaneNumber.Text = "";
+            }
+            catch (Exception)
+            {
+                //isnert error message here.
+            }
         }
     }
 }

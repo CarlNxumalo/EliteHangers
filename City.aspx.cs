@@ -13,9 +13,16 @@ namespace EliteHangers
         UserAuth user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] != null)
+            try
             {
-                user = (UserAuth)Session["user"];
+                 catch (System.Exception)
+                 {
+                    throw;
+                 }
+             
+             if (Session["user"] != null)
+             {
+                 user = (UserAuth)Session["user"];
 
                 if (user.role == 2)//customer
                 {
@@ -25,24 +32,45 @@ namespace EliteHangers
                 {
                     Response.Redirect("Clerk.aspx");
                 }
-            }
-            else
-            {
+             }
+             
+             
+             else
+             {
                 Response.Redirect("Login.aspx");
+             }
+             
+             sql.display("City", GridView1);
             }
-            sql.display("City", GridView1);
+           
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            sql.insertCity(txtName.Text);
-            sql.display("City", GridView1);
+            try
+            {
+             sql.insertCity(txtName.Text);
+             sql.display("City", GridView1);
+            }
+            catch (Exception)
+            {
+                //Inser error message here.
+            }
+            
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            sql.deleteCity(int.Parse(txtCity.Text));
-            sql.display("City", GridView1);
+            try
+            {
+             sql.deleteCity(int.Parse(txtCity.Text));
+             sql.display("City", GridView1);
+            }
+            catch(Exeption)
+            {
+                //Insert errror message here.
+            }
+            
 
         }
 
@@ -53,8 +81,16 @@ namespace EliteHangers
 
         protected void btnDelete0_Click(object sender, EventArgs e)
         {
-            sql.updateCity(int.Parse(txtCityUp.Text), txtNameUp.Text);
-            sql.display("City", GridView1);
+            try
+            {
+             sql.updateCity(int.Parse(txtCityUp.Text), txtNameUp.Text);
+             sql.display("City", GridView1);
+            }
+            catch (Exception)
+            {
+                //Insert error nmessage here.
+            }
+            
         }
     }
 }

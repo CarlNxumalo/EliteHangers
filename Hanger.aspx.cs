@@ -13,7 +13,10 @@ namespace EliteHangers
         UserAuth user;
         string query;
         protected void Page_Load(object sender, EventArgs e)
-        {
+        { 
+            try
+            {
+                
             if (Session["user"] != null)
             {
                 user = (UserAuth)Session["user"];
@@ -44,7 +47,11 @@ namespace EliteHangers
                 sql.comboBox(query, "Hangar", "name", ddlUpdateHangername, "hangar_id");
             }
             sql.display("Hangar", GridView1);
-
+            }
+            catch (Exception)
+            {
+                //Insert error message here
+            }
         }
 
         protected void txtCity0_TextChanged(object sender, EventArgs e)
@@ -54,31 +61,55 @@ namespace EliteHangers
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            if (ddlCityName.Text != "")
+            try
             {
+                  if (ddlCityName.Text != "")
+                  {
+                   sql.insertHanger(int.Parse(ddlCityName.SelectedValue), txtName.Text, decimal.Parse(txtPrice.Text));
+                  sql.display("Hangar", GridView1);
+                  }
+             
+             //select city
 
-                sql.insertHanger(int.Parse(ddlCityName.SelectedValue), txtName.Text, decimal.Parse(txtPrice.Text));
-                sql.display("Hangar", GridView1);
-            }
-            //select city
-
-            else
-            {
+             else
+             {
                 lblErrorcity.Text = "Select a city name";
+             }
+             
             }
+            catch(Exeception)
+            {
+                //Insert error message here.
+            }
+          
                 
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            sql.deleteHanger(int.Parse(txtHanger.Text));
-            sql.display("Hangar", GridView1);
+            try
+            {
+             sql.deleteHanger(int.Parse(txtHanger.Text));
+             sql.display("Hangar", GridView1);
+            }
+            catch(Exeception)
+            {
+                //Insert error message here.
+            }
+           
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            sql.updateHanger(int.Parse(ddlUpdateHangername.SelectedValue),int.Parse(ddlUpdateCityName.SelectedValue), txtNameUp.Text, decimal.Parse(txtPriceUp.Text));
-            sql.display("Hangar", GridView1);
+            try
+            {
+             sql.updateHanger(int.Parse(ddlUpdateHangername.SelectedValue),int.Parse(ddlUpdateCityName.SelectedValue), txtNameUp.Text, decimal.Parse(txtPriceUp.Text));
+             sql.display("Hangar", GridView1);
+            }
+           catch(Exception)
+           {
+            //insert error message here.
+           }
         }
 
         protected void ddlCityName_SelectedIndexChanged(object sender, EventArgs e)

@@ -15,22 +15,33 @@ namespace EliteHangers
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)//first time the user visits the dashboard page
-            {//if fills both comoboxes with all the data 
+            try
+            {
+                 if(!IsPostBack)//first time the user visits the dashboard page
+             {//if fills both comoboxes with all the data 
                 query = "SELECT DISTINCT name FROM City";
                 sql.comboBox(query, "City", "name", ddlCity);
                 query = $"SELECT * FROM Hangar ";
                 sql.comboBox(query, "Hangar", "name", ddlHangar);
-                
+                }
             }
+           
             
         }
 
         protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
         {//when a person selects a city it will filter hangers according to the city 
+         try
+         {
             query = $" SELECT  Hangar.name FROM Hangar INNER JOIN City ON Hangar.city_id = City.city_id WHERE City.name = '{ddlCity.SelectedValue}'";
             sql.comboBox(query, "Hangar", "name", ddlHangar);
             lblError.Text = ddlCity.SelectedValue;
+         }
+         catch (Exception)
+         {
+            //Insert error message here.
+         }
+            
         }
 
         protected void ddlHangar_SelectedIndexChanged(object sender, EventArgs e)

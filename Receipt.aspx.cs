@@ -12,14 +12,15 @@ namespace EliteHangers
         UserAuth user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if (Session["user"] != null)
+            try
             {
-                user = (UserAuth)Session["user"];
-
-                if (user.role == 2)//customer
+                if (Session["user"] != null)\
                 {
-                    if (Session["TotalDays"] != null)
+                 user = (UserAuth)Session["user"];
+
+                 if (user.role == 2)//customer
+                 {
+                     if (Session["TotalDays"] != null)
                     {
                         lblCityName.Text= Session["CityName"].ToString();
                         lblHangarName.Text=  Session["HangarName"].ToString();
@@ -32,27 +33,41 @@ namespace EliteHangers
                     {
                         Response.Redirect("dashboard.aspx");
                     }
-                }
-                else if (user.role == 1)
-                {
+                 }
+                   
+                 else if (user.role == 1)
+                 {
                     //manager
                     Response.Redirect("Admin.aspx");
-                }
-                else
-                {
+                 }
+                 else
+                 {
                     //employee clerk
                     Response.Redirect("Clerk.aspx");
+                 }
                 }
-            }
-            else
-            {
+                else
+             {
                 Response.Redirect("Login.aspx");
+             }
+             
+            }
+            catch (Exception)
+            {
+                //Insert error message here.
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("dashboard3.aspx");
+            try
+            {
+                Response.Redirect("dashboard3.aspx");
+            }
+            catch (Exception)
+            {
+                //insert error message here.
+            }
         }
     }
 }

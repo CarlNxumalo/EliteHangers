@@ -12,25 +12,56 @@ namespace EliteHangers
         SQL sql = new SQL();
         protected void Page_Load(object sender, EventArgs e)
         {
-            sql.display("Employee", GridView1);
+            try
+            {
+                sql.display("Employee", GridView1);
+            }
+            catch (Exception)
+            {
+                //Insert error message here
+            }
+            
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            sql.deleteEmployee(int.Parse(txtEmployee.Text));
-            sql.display("Employee", GridView1);
+            try
+            {
+             sql.deleteEmployee(int.Parse(txtEmployee.Text));
+             sql.display("Employee", GridView1);
+            }
+            catch (Exception)
+            {
+                //Insert error message here
+            }
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            sql.updateEmployee(int.Parse(txtEmployeeUp.Text), txtNameUp.Text, txtSurnameUp.Text, txtEmailUp.Text, txtPasswordUp.Text, int.Parse(txtRoleUp.Text));
-            sql.display("Employee", GridView1);
+            try
+            {
+             sql.updateEmployee(int.Parse(txtEmployeeUp.Text), txtNameUp.Text, txtSurnameUp.Text, txtEmailUp.Text, txtPasswordUp.Text, int.Parse(txtRoleUp.Text));
+             sql.display("Employee", GridView1);
+            }
+            catch (Exception)
+            {
+                //insert error message here.
+            }
+            
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            sql.insertEmployee(txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, int.Parse(txtRole.Text));
-            sql.display("Employee", GridView1);
+            try
+            {
+             sql.insertEmployee(txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, int.Parse(txtRole.Text));
+             sql.display("Employee", GridView1);
+            }
+            catch (Exception)
+            {
+                //insert error message here
+            }
+         
         }
     }
 }
