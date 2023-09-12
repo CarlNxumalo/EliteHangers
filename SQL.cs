@@ -29,25 +29,46 @@ namespace EliteHangers
         // Constructor
         public SQL()
         {
-            SQLConnectionString cs = new SQLConnectionString();
-            connection_string = cs.connection_string;
+            try
+            {
+                SQLConnectionString cs = new SQLConnectionString();
+                connection_string = cs.connection_string;
 
-            //connection
-            connection = new SqlConnection(connection_string);
+                //connection
+                connection = new SqlConnection(connection_string);
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
         public void connectionOpen()
         {
-            if (connection.State == ConnectionState.Closed)
+            try
             {
-                //open it 
-                connection.Open();
+                if (connection.State == ConnectionState.Closed)
+                {
+                    //open it 
+                    connection.Open();
+                }
+            }
+            catch(Exception)
+            {
+
             }
         }
         public void connectionClose()
         {
-            if (connection != null && connection.State == ConnectionState.Open)
+            try
             {
-                connection.Close();
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+            catch(Exception)
+            {
+
             }
         }
         //non query
