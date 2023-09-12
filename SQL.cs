@@ -316,8 +316,7 @@ namespace EliteHangers
             {
                 new SqlParameter("@hangar_id", SqlDbType.Int) { Value = hangar_id }
             };
-            nonQuery(query);
-            }
+            nonQuery(query);}
 
             catch (Exception)
             {
@@ -332,19 +331,18 @@ namespace EliteHangers
                 query = $"UPDATE Hangar SET city_id = @city_id, name = @name, price = @price WHERE hangar_id = @hanger_id";
                 //put the parameters in a list
                 parameters = new List<SqlParameter>
-            {
-                new SqlParameter("@city_id", SqlDbType.Int) { Value = city_id },
-                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
-                new SqlParameter("@price", SqlDbType.Money) { Value = price },
-                new SqlParameter("@hanger_id", SqlDbType.Int) { Value = hangar_id }
-            };
+                {
+                 new SqlParameter("@city_id", SqlDbType.Int) { Value = city_id },
+                 new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
+                 new SqlParameter("@price", SqlDbType.Money) { Value = price },
+                 new SqlParameter("@hanger_id", SqlDbType.Int) { Value = hangar_id }
+                };
                 nonQuery(query);
             }
             catch(Exception)
             {
                 //Insert error message here.
             }
-           
         }
 
         public void deleteCity(int city_id)
@@ -353,16 +351,15 @@ namespace EliteHangers
             {
                 query = "DELETE FROM City WHERE city_id = @city_id";
                 parameters = new List<SqlParameter>
-            {
-                new SqlParameter("@city_id", SqlDbType.Int) { Value =  city_id}
-            };
-                nonQuery(query);
+                {
+                  new SqlParameter("@city_id", SqlDbType.Int) { Value =  city_id}
+                };
+               nonQuery(query);
             }
             catch(Exception)
             {
                 //Insert error mesaage heere.
             }
-            
         }
 
         public void insertCity(string name)
@@ -372,10 +369,9 @@ namespace EliteHangers
                 query = "INSERT INTO City (name)VALUES (@name)";
                 //put the parameters in a list
                 parameters = new List<SqlParameter>
-            {
-                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name }
-
-            };
+                {
+                  new SqlParameter("@name", SqlDbType.NVarChar) { Value = name }
+                };
                 nonQuery(query);
             }
             catch(Exception)
@@ -393,11 +389,11 @@ namespace EliteHangers
                 query = $"UPDATE City SET name = @name WHERE city_id= @city_id";
                 //put the parameters in a list
                 parameters = new List<SqlParameter>
-            {
-                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
-                new SqlParameter("@city_id", SqlDbType.NVarChar) { Value = city_id }
+                {
+                 new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
+                 new SqlParameter("@city_id", SqlDbType.NVarChar) { Value = city_id }
+                };
 
-            };
                 nonQuery(query);
             }
             catch(Exception)
@@ -413,13 +409,14 @@ namespace EliteHangers
                 query = "INSERT INTO Employee (name, surname, email, password, role)VALUES (@name, @surname, @email, @password, @role)";
                 //put the parameters in a list
                 parameters = new List<SqlParameter>
-            {
-                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
-                new SqlParameter("@surname", SqlDbType.NVarChar) { Value = surname },
-                new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
-                new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
-                new SqlParameter("@role", SqlDbType.Int) { Value = role},
-            };
+                {
+                    
+                 new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
+                 new SqlParameter("@surname", SqlDbType.NVarChar) { Value = surname },
+                 new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
+                 new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
+                 new SqlParameter("@role", SqlDbType.Int) { Value = role},
+                };
                 nonQuery(query);
             }
             catch(Exception)
@@ -435,16 +432,15 @@ namespace EliteHangers
             {
                 query = "DELETE FROM Employee WHERE employee_id = @employee_id";
                 parameters = new List<SqlParameter>
-            {
-                new SqlParameter("@employee_id", SqlDbType.Int) { Value = emp_id }
-            };
+                {
+                    new SqlParameter("@employee_id", SqlDbType.Int) { Value = emp_id }
+                };
                 nonQuery(query);
             }
             catch(Exception)
             {
                 //Insert error messag here.
             }
-            
         }
 
 
@@ -454,14 +450,14 @@ namespace EliteHangers
             {
                 query = $"UPDATE Employee SET name = @name, surname = @surname, email = @email, password = @password, role = @role WHERE employee_id = @employee_id";
                 parameters = new List<SqlParameter>
-            {
-                new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
-                new SqlParameter("@surname", SqlDbType.NVarChar) { Value = surname },
-                new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
-                new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
-                new SqlParameter("@role", SqlDbType.Int) { Value = role},
-                new SqlParameter("@employee_id", SqlDbType.Int) { Value = emp_id},
-            };
+                {
+                 new SqlParameter("@name", SqlDbType.NVarChar) { Value = name },
+                 new SqlParameter("@surname", SqlDbType.NVarChar) { Value = surname },
+                 new SqlParameter("@email", SqlDbType.NVarChar) { Value = email },
+                 new SqlParameter("@password", SqlDbType.NVarChar) { Value = password },
+                 new SqlParameter("@role", SqlDbType.Int) { Value = role},
+                 new SqlParameter("@employee_id", SqlDbType.Int) { Value = emp_id},
+                };
                 nonQuery(query);
             }
             catch(Exception)
@@ -530,7 +526,6 @@ namespace EliteHangers
 
                 }
 
-
             }
             catch (System.Data.SqlTypes.SqlNullValueException)
             {
@@ -556,20 +551,19 @@ namespace EliteHangers
                 query = "INSERT INTO Booking (customer_id, hangar_id, date_start, date_end, status) VALUES (@customer_id, @hangar_id, @date_start, @date_end, @status)";
                 //put the parameters in a list
                 parameters = new List<SqlParameter>
-            {
-                new SqlParameter("@customer_id", SqlDbType.Int) { Value = customer_id},
-                new SqlParameter("@hangar_id", SqlDbType.Int) { Value = hangar_id },
-                new SqlParameter("@date_start", SqlDbType.DateTime) { Value = date_start },
-                new SqlParameter("@date_end", SqlDbType.DateTime) { Value = date_end },
-                new SqlParameter("@status", SqlDbType.Int) { Value = 1},
-            };
+                {
+                 new SqlParameter("@customer_id", SqlDbType.Int) { Value = customer_id},
+                 new SqlParameter("@hangar_id", SqlDbType.Int) { Value = hangar_id },
+                 new SqlParameter("@date_start", SqlDbType.DateTime) { Value = date_start },
+                 new SqlParameter("@date_end", SqlDbType.DateTime) { Value = date_end },
+                 new SqlParameter("@status", SqlDbType.Int) { Value = 1},
+                };
                 nonQuery(query);
             }
             catch
             {
-
+                //insert error message here.
             }
-            
             
         }
 
@@ -671,12 +665,12 @@ namespace EliteHangers
                 query = "INSERT INTO [Transaction] (booking_id, date, amount, type) VALUES (@booking_id, @date, @amount, @type)";
                 //put the parameters in a list
                 parameters = new List<SqlParameter>
-            {
-                new SqlParameter("@booking_id", SqlDbType.Int) { Value = booking_id},
-                new SqlParameter("@date", SqlDbType.DateTime) { Value = DateTime.Today.Date},
-                new SqlParameter("@amount", SqlDbType.Decimal) { Value = amount },
-                new SqlParameter("@type", SqlDbType.Int) { Value = type }
-            };
+                { 
+                 new SqlParameter("@booking_id", SqlDbType.Int) { Value = booking_id},
+                 new SqlParameter("@date", SqlDbType.DateTime) { Value = DateTime.Today.Date},
+                 new SqlParameter("@amount", SqlDbType.Decimal) { Value = amount },
+                 new SqlParameter("@type", SqlDbType.Int) { Value = type }
+                };
                 nonQuery(query);
             }
             catch(Exception)
