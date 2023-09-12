@@ -15,37 +15,34 @@ namespace EliteHangers
         {
             try
             {
-                 if (Session["user"] != null)
+                if (Session["user"] != null)
                 {
-                    
-                 user = (UserAuth)Session["user"];
+                    user = (UserAuth)Session["user"];
 
-                 if (user.role == 2)//customer
-                 {
-                    
-                 }
-                 else if (user.role == 0)
-                  {
-                    //manager
-                    Response.Redirect("Admin.aspx");
-                  }
-                 else
-                  {
-                    //employee clerk
-                    Response.Redirect("Clerk.aspx");
-                  }
-                 }
-             
-             else
-             {
-                Response.Redirect("Login.aspx");
-             }
+                    if (user.role == 2) // Customer
+                    {
+                        // Customer-specific code here if needed
+                    }
+                    else if (user.role == 0)
+                    {
+                        // Manager
+                        Response.Redirect("Admin.aspx");
+                    }
+                    else
+                    {
+                        // Employee Clerk
+                        Response.Redirect("Clerk.aspx");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
             }
             catch (Exception)
             {
-                //error message here.
+                // Insert error message here if needed.
             }
-           
         }
 
         protected void btnAddCustomer_Click(object sender, EventArgs e)
@@ -56,6 +53,10 @@ namespace EliteHangers
                   {
                      sql.updateCustomer(user.id, txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, txtPlaneNumber.Text);
                   }
+            }
+            catch
+            {
+                //insert error message here.
             }
           
         }

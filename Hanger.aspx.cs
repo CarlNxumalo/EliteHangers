@@ -13,44 +13,44 @@ namespace EliteHangers
         UserAuth user;
         string query;
         protected void Page_Load(object sender, EventArgs e)
-        { 
+        {
             try
             {
-                
-            if (Session["user"] != null)
-            {
-                user = (UserAuth)Session["user"];
-
-                if (user.role == 2)//customer
+                if (Session["user"] != null)
                 {
-                    Response.Redirect("dashboard3.aspx");
+                    user = (UserAuth)Session["user"];
+
+                    if (user.role == 2) // customer
+                    {
+                        Response.Redirect("dashboard3.aspx");
+                    }
+                    if (user.role == 0) // employee
+                    {
+                        Response.Redirect("Clerk.aspx");
+                    }
                 }
-                if (user.role == 0)//employee
+                else
                 {
-                    Response.Redirect("Clerk.aspx");
+                    Response.Redirect("Login.aspx");
                 }
 
-            }
-            else
-            {
-                Response.Redirect("Login.aspx");
-            }
-            if (!IsPostBack)
-            {
-                query = "SELECT name, city_id FROM City;";
-                sql.comboBox(query, "City", "name", ddlCityName, "city_id");
+                if (!IsPostBack)
+                {
+                    query = "SELECT name, city_id FROM City;";
+                    sql.comboBox(query, "City", "name", ddlCityName, "city_id");
 
-                query = "SELECT name, city_id FROM City;";
-                sql.comboBox(query, "City", "name", ddlUpdateCityName, "city_id");
+                    query = "SELECT name, city_id FROM City;";
+                    sql.comboBox(query, "City", "name", ddlUpdateCityName, "city_id");
 
-                query = "SELECT name, hangar_id FROM Hangar;";
-                sql.comboBox(query, "Hangar", "name", ddlUpdateHangername, "hangar_id");
-            }
-            sql.display("Hangar", GridView1);
+                    query = "SELECT name, hangar_id FROM Hangar;";
+                    sql.comboBox(query, "Hangar", "name", ddlUpdateHangername, "hangar_id");
+                }
+
+                sql.display("Hangar", GridView1);
             }
             catch (Exception)
             {
-                //Insert error message here
+                // Insert error message here
             }
         }
 
@@ -63,26 +63,20 @@ namespace EliteHangers
         {
             try
             {
-                  if (ddlCityName.Text != "")
-                  {
-                   sql.insertHanger(int.Parse(ddlCityName.SelectedValue), txtName.Text, decimal.Parse(txtPrice.Text));
-                  sql.display("Hangar", GridView1);
-                  }
-             
-             //select city
-
-             else
-             {
-                lblErrorcity.Text = "Select a city name";
-             }
-             
+                if (ddlCityName.Text != "")
+                {
+                    sql.insertHanger(int.Parse(ddlCityName.SelectedValue), txtName.Text, decimal.Parse(txtPrice.Text));
+                    sql.display("Hangar", GridView1);
+                }
+                else
+                {
+                    lblErrorcity.Text = "Select a city name";
+                }
             }
-            catch(Exeception)
+            catch (Exception)
             {
-                //Insert error message here.
+                // Insert error message here.
             }
-          
-                
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -92,7 +86,7 @@ namespace EliteHangers
              sql.deleteHanger(int.Parse(txtHanger.Text));
              sql.display("Hangar", GridView1);
             }
-            catch(Exeception)
+            catch(Exception)
             {
                 //Insert error message here.
             }

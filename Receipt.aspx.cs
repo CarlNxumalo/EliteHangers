@@ -14,47 +14,45 @@ namespace EliteHangers
         {
             try
             {
-                if (Session["user"] != null)\
+                if (Session["user"] != null)
                 {
-                 user = (UserAuth)Session["user"];
+                    user = (UserAuth)Session["user"];
 
-                 if (user.role == 2)//customer
-                 {
-                     if (Session["TotalDays"] != null)
+                    if (user.role == 2) // Customer
                     {
-                        lblCityName.Text= Session["CityName"].ToString();
-                        lblHangarName.Text=  Session["HangarName"].ToString();
-                        lblAmount.Text =  Session["Amount"].ToString();
-                        lblStartDate.Text =  Session["DateStart"].ToString();
-                        lblEndDate.Text =  Session["DateEnd"].ToString();
-                        lblDays.Text =  Session["TotalDays"].ToString();
+                        if (Session["TotalDays"] != null)
+                        {
+                            lblCityName.Text = Session["CityName"].ToString();
+                            lblHangarName.Text = Session["HangarName"].ToString();
+                            lblAmount.Text = Session["Amount"].ToString();
+                            lblStartDate.Text = Session["DateStart"].ToString();
+                            lblEndDate.Text = Session["DateEnd"].ToString();
+                            lblDays.Text = Session["TotalDays"].ToString();
+                        }
+                        else
+                        {
+                            Response.Redirect("dashboard.aspx");
+                        }
+                    }
+                    else if (user.role == 1)
+                    {
+                        // Manager
+                        Response.Redirect("Admin.aspx");
                     }
                     else
                     {
-                        Response.Redirect("dashboard.aspx");
+                        // Employee Clerk
+                        Response.Redirect("Clerk.aspx");
                     }
-                 }
-                   
-                 else if (user.role == 1)
-                 {
-                    //manager
-                    Response.Redirect("Admin.aspx");
-                 }
-                 else
-                 {
-                    //employee clerk
-                    Response.Redirect("Clerk.aspx");
-                 }
                 }
                 else
-             {
-                Response.Redirect("Login.aspx");
-             }
-             
+                {
+                    Response.Redirect("Login.aspx");
+                }
             }
             catch (Exception)
             {
-                //Insert error message here.
+                // Handle exceptions and insert an error message here if needed.
             }
         }
 

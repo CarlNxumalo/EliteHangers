@@ -15,29 +15,27 @@ namespace EliteHangers
         {
             try
             {
-                 if (Session["user"] != null)
+                if (Session["user"] != null)
                 {
-                    user = (UserAuth) Session["user"];
+                    user = (UserAuth)Session["user"];
 
-                 if (user.role == 2)//customer
-                 {
-                    Response.Redirect("dashboard3.aspx");
-                 }
-                 if (user.role == 0)//employee
-                 {
-                    Response.Redirect("Clerk.aspx");
-                 }
+                    if (user.role == 2) // Customer
+                    {
+                        Response.Redirect("dashboard3.aspx");
+                    }
+                    if (user.role == 0) // Employee
+                    {
+                        Response.Redirect("Clerk.aspx");
+                    }
                 }
-             
-             else
-             {
-                Response.Redirect("Login.aspx");
-             }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
             }
-
             catch (Exception)
             {
-                //insert error message here.
+                // Insert error message here if needed.
             }
         }
 

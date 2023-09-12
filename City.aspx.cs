@@ -13,37 +13,41 @@ namespace EliteHangers
         UserAuth user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!IsPostBack) // Make sure this code only runs when the page is first loaded, not on postbacks
             {
-                 catch (System.Exception)
-                 {
-                    throw;
-                 }
-             
-             if (Session["user"] != null)
-             {
-                 user = (UserAuth)Session["user"];
+                try
+                {
+                    if (Session["user"] != null)
+                    {
+                        UserAuth user = (UserAuth)Session["user"];
 
-                if (user.role == 2)//customer
-                {
-                    Response.Redirect("dashboard3.aspx");
+                        if (user.role == 2) // customer
+                        {
+                            Response.Redirect("dashboard3.aspx");
+                        }
+                        else if (user.role == 0) // employee
+                        {
+                            Response.Redirect("Clerk.aspx");
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("Login.aspx");
+                    }
                 }
-                if (user.role == 0)//employee
+                catch (Exception ex)
                 {
-                    Response.Redirect("Clerk.aspx");
+                    // Handle the exception appropriately, log it, or display an error message
+                    // You can access the exception details through the 'ex' variable
+                    // For example, you could log the error like this:
+                    // Logger.Log("An error occurred: " + ex.Message);
                 }
-             }
-             
-             
-             else
-             {
-                Response.Redirect("Login.aspx");
-             }
-             
-             sql.display("City", GridView1);
+
+                // Assuming sql.display is a valid method, call it here
+                sql.display("City", GridView1);
             }
-           
         }
+
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
