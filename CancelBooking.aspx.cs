@@ -13,33 +13,41 @@ namespace EliteHangers
         private SQL sql = new SQL();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null)
+            try
             {
-                UserAuth user = (UserAuth)Session["user"];
-                if (user.role == 2)//customer
+                if (Session["user"] == null)
                 {
-                    if (!IsPostBack)
+                    UserAuth user = (UserAuth)Session["user"];
+                    if (user.role == 2)//customer
                     {
-                        query = "SELECT booking_id FROM Booking where customer_id = "+user.id;
-                        sql.comboBox(query, "Booking", "booking_id", ddlBookingID, "booking_id");
+                        if (!IsPostBack)
+                        {
+                            query = "SELECT booking_id FROM Booking where customer_id = " + user.id;
+                            sql.comboBox(query, "Booking", "booking_id", ddlBookingID, "booking_id");
+                        }
                     }
-                }
-                else if(user.role == 1)
-                {
-                    //manager
+                    else if (user.role == 1)
+                    {
+                        //manager
+
+                    }
+                    else
+                    {
+                        //0
+                        //employee clerk
+                    }
 
                 }
                 else
                 {
-                    //0
-                    //employee clerk
+                    Response.Redirect("Login.aspx");
                 }
-                
             }
-            else
+            catch(Exception)
             {
-                Response.Redirect("Login.aspx");
+                //insert error message.
             }
+           
         }
 
 
