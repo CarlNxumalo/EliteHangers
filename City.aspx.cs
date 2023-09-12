@@ -25,7 +25,6 @@ namespace EliteHangers
                 {
                     Response.Redirect("Clerk.aspx");
                 }
-
             }
             else
             {
