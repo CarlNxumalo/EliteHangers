@@ -70,7 +70,7 @@ namespace EliteHangers
              sql.deleteCity(int.Parse(txtCity.Text));
              sql.display("City", GridView1);
             }
-            catch(Exeption)
+            catch(Exception)
             {
                 //Insert errror message here.
             }
