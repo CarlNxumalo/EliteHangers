@@ -17,8 +17,16 @@ namespace EliteHangers
         //add customer needs details
         public void addCustomer(string name, string surname, string email, string password, string plane_number)
         {
-            SQL sql = new SQL();
-            sql.addCustomer(name, surname, email, password, plane_number);
+            try
+            {
+                SQL sql = new SQL();
+                sql.addCustomer(name, surname, email, password, plane_number);
+            }
+            catch(Exception)
+            {
+                //Insert errror message
+            }
+           
         }
 
         //delete user needs and ID 

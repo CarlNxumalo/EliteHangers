@@ -17,25 +17,26 @@ namespace EliteHangers
 
         protected void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            
-            customer.addCustomer(txtName1.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, txtPlaneNumber.Text);
+            try
+            {
+                customer.addCustomer(txtName1.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, txtPlaneNumber.Text);
 
-            //Clear the textboxs 
+             //Clear the textboxs 
 
-            txtName1.Text = "";
-            txtSurname.Text = "";
-            txtEmail.Text = "";
-            txtPassword.Text = "";
-            txtPlaneNumber.Text = "";
+             txtName1.Text = "";
+             txtSurname.Text = "";
+             txtEmail.Text = "";
+             txtPassword.Text = "";
+             txtPlaneNumber.Text = "";
 
-            //take them to the login
+             //take them to the login
 
-            
-            Response.Redirect("login.aspx");
-
-
-
-
+             Response.Redirect("login.aspx");
+            }
+            catch (Exception)
+            {
+                //insert error message here.
+            }
 
         }
     }
