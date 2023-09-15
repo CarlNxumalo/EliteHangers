@@ -40,20 +40,19 @@ namespace EliteHangers
 
         protected void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            if (txtEmail.Text != null)
+
+            try
             {
-
                 sql.updateCustomer(user.id, txtName.Text, txtSurname.Text, txtEmail.Text, txtPassword.Text, txtPlaneNumber.Text);
+                lblMessage.Text = "Succesfully updated profile";
             }
+            catch (Exception)
+            {
+                lblMessage.Text = "Could not update your profile";
+            }
+            
         }
 
-        protected void btnClear_Click(object sender, EventArgs e)
-        {
-            txtName.Text = "";
-            txtSurname.Text = "";
-            txtEmail.Text = "";
-            txtPassword.Text = "";
-            txtPlaneNumber.Text = "";
-        }
+        
     }
 }

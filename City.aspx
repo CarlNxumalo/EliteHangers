@@ -87,8 +87,9 @@
                 <li class="li_design"><asp:HyperLink class="link" ID="hlMakeBooking" runat="server" NavigateUrl="~/Report.aspx">Report</asp:HyperLink></li>
                 <li class="li_design"><asp:HyperLink class="link" ID="hlCancelBooking" runat="server" NavigateUrl="~/City.aspx">Maintain City</asp:HyperLink></li>
                 <li class="li_design"><asp:HyperLink class="link" ID="hlUpdateProfile" runat="server" NavigateUrl="~/Hanger.aspx">Maintain Hangar</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlEmpoyee" runat="server" NavigateUrl="~/Employee.aspx">Maintain Employee</asp:HyperLink></li>
             </ul>
-        </nav>
+    </nav>
     <form id="form1" runat="server">
         <div class="auto-style1">
             <strong>
@@ -139,13 +140,13 @@
                         &nbsp;&nbsp;
                         <asp:Label ID="Label2" runat="server" Text="Name:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtName" runat="server" ValidationGroup="InsertGroup"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtName" ErrorMessage="Enter correct name"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtName" ErrorMessage="Enter city name" ValidationGroup="InsertGroup"></asp:RequiredFieldValidator>
                         <br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" Width="119px" />
+                        <asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" Width="119px" ValidationGroup="InsertGroup" />
                     </asp:Panel>
                     <br />
                     <br />
@@ -164,14 +165,13 @@
                         <br />
                         &nbsp;&nbsp;
                         <asp:Label ID="Label3" runat="server" Text="City ID:"></asp:Label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>
-                        &nbsp;&nbsp;&nbsp;
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtCity" ErrorMessage="Enter correct city id"></asp:RequiredFieldValidator>
-                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlDel" runat="server" Width="142px">
+                        </asp:DropDownList>
+&nbsp;<br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" Width="134px" />
+                        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" Width="134px" ValidationGroup="Delete" />
+                        <asp:Label ID="lblDelete" runat="server"></asp:Label>
                     </asp:Panel>
                     <br />
                     <br />
@@ -190,24 +190,23 @@
                         <br />
                         &nbsp;&nbsp;
                         <asp:Label ID="Label5" runat="server" Text="City ID:"></asp:Label>
-                        &nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtCityUp" runat="server"></asp:TextBox>
-                        &nbsp;
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtCityUp" ErrorMessage="Enter correct city id"></asp:RequiredFieldValidator>
-&nbsp;
+                        &nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlUp" runat="server" Width="164px">
+                        </asp:DropDownList>
+                        &nbsp;&nbsp; &nbsp;
                         <br />
                         <br />
                         &nbsp;&nbsp;
                         <asp:Label ID="Label4" runat="server" Text="Name:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtNameUp" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNameUp" runat="server" ValidationGroup="Update"></asp:TextBox>
                         &nbsp;&nbsp;
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtNameUp" ErrorMessage="Enter correct name"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtNameUp" ErrorMessage="Enter correct name" ValidationGroup="Update"></asp:RequiredFieldValidator>
 &nbsp;
                         <br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnUpdate" runat="server" OnClick="btnDelete0_Click" Text="Update" Width="134px" />
+                        <asp:Button ID="btnUpdate" runat="server" OnClick="btnDelete0_Click" Text="Update" Width="134px" ValidationGroup="Update" />
+                        <asp:Label ID="lblUpdate" runat="server"></asp:Label>
                     </asp:Panel>
                     <br />
                     <br />

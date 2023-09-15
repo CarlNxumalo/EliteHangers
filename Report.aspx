@@ -33,11 +33,14 @@
                 <li class="li_design"><asp:HyperLink class="link" ID="hlMakeBooking" runat="server" NavigateUrl="~/Report.aspx">Report</asp:HyperLink></li>
                 <li class="li_design"><asp:HyperLink class="link" ID="hlCancelBooking" runat="server" NavigateUrl="~/City.aspx">Maintain City</asp:HyperLink></li>
                 <li class="li_design"><asp:HyperLink class="link" ID="hlUpdateProfile" runat="server" NavigateUrl="~/Hanger.aspx">Maintain Hangar</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlEmpoyee" runat="server" NavigateUrl="~/Employee.aspx">Maintain Employee</asp:HyperLink></li>
             </ul>
         </nav>
     <form id="form1" runat="server">
         <div class="auto-style1">
+            <h1>
             <asp:Label ID="Label1" runat="server" CssClass="auto-style2" Text="Report"></asp:Label>
+            </h1>
         </div>
         <table style="width:100%;">
             <tr>
@@ -67,24 +70,24 @@
             </tr>
             <tr>
                 <td class="auto-style4">
-                    <asp:Label ID="Label2" runat="server" Text="Group by City ID:"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text="Top five highest customer"></asp:Label>
                     <br />
                     <br />
-                    <asp:Button ID="btnGroup" runat="server" Text="Group by" Width="133px" OnClick="btnGroup_Click" />
+                    <asp:Button ID="btnGroup" runat="server" Text="Top 5" Width="133px" OnClick="btnGroup_Click" />
                     <br />
                 </td>
                 <td class="auto-style5">
-                    <asp:Label ID="Label3" runat="server" Text="Total amount for transaction:"></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="Number of bookings per month"></asp:Label>
                     <br />
                     <br />
-                    <asp:Button ID="btnTotal" runat="server" Text="Total" Width="133px" OnClick="btnTotal_Click" />
+                    <asp:Button ID="btnTotal" runat="server" Text="Bookings" Width="133px" OnClick="btnTotal_Click" />
                     <br />
                 </td>
                 <td>
-                    <asp:Label ID="Label4" runat="server" Text="Average days of stay:"></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Text="Revenue received per month"></asp:Label>
                     <br />
                     <br />
-                    <asp:Button ID="btnAverage" runat="server" Text="Average" Width="133px" />
+                    <asp:Button ID="btnAverage" runat="server" Text="Revenue" Width="133px" OnClick="btnAverage_Click" />
                     <br />
                 </td>
             </tr>

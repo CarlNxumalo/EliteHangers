@@ -64,33 +64,45 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        
         <div id="container">
+            <h1>
+            Sign Up Page
+        </h1>
             <div id="logo">
-                <img src="path-to-your-logo.png" alt="Elite Hangers Logo" />
+                <asp:Image ID="Image1" ImageUrl="~/WhatsApp Image 2023-09-04 at 15.22.26.jpeg" runat="server" Width="150px"/>
             </div>
             <div class="input-group">
                 <label for="txtName">Name:</label>
                 <asp:TextBox ID="txtName1" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName1" ErrorMessage="Enter name" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="input-group">
                 <label for="txtSurname">Surname:</label>
                 <asp:TextBox ID="txtSurname" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtSurname" ErrorMessage="Enter surname" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="input-group">
                 <label for="txtEmail">Email:</label>
                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter email" ForeColor="Red"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter valid email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ForeColor="Red"></asp:RegularExpressionValidator>
             </div>
             <div class="input-group">
                 <label for="txtPassword">Password:</label>
                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtPassword" ErrorMessage="Enter password" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="input-group">
                 <label for="txtPlaneNumber">Plane:</label>
                 <asp:TextBox ID="txtPlaneNumber" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPlaneNumber" ErrorMessage="Enter plane number" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
             <div class="btn-container">
                 <asp:Button ID="btnAddCustomer" runat="server" Text="Sign Up" CssClass="btn btn-primary" OnClick="btnAddCustomer_Click" />
+               
             </div>
+             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/login.aspx">Login Page</asp:HyperLink>
         </div>
     </form>
 </body>

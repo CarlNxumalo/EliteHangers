@@ -98,18 +98,19 @@ namespace EliteHangers
             
             if (Session["hangarID"] != null && Session["sc1"] != null && Session["sc2"] != null)
             {
-                sql.insertBooking(user.id, int.Parse(Session["hangarID"].ToString()), DateTime.Parse(Session["sc1Date"].ToString()), DateTime.Parse(Session["sc2Date"].ToString()));
-                //
-                ArrayList list = sql.bookingID(user.id);
-                    // Use bookingId and amount for your transaction logic
-                sql.recordTransaction((int)list[0], (decimal)list[1], 1);
+                sql.recordBooking(user.id, int.Parse(Session["hangarID"].ToString()), DateTime.Parse(Session["sc1Date"].ToString()), DateTime.Parse(Session["sc2Date"].ToString()));
+                
 
                 Session["CityName"] = DropDownList1.SelectedItem;
                 Session["HangarName"] = DropDownList2.SelectedItem;
-                Session["Amount"] = (decimal)list[1];
+                
                 Session["DateStart"] = CalendarStart.SelectedDate.ToString("D");
                 Session["DateEnd"] = CalendarEnd.SelectedDate.ToString("D");
-                Session["TotalDays"] = CalendarEnd.SelectedDate - CalendarStart.SelectedDate;
+                TimeSpan timeDifference = CalendarEnd.SelectedDate - CalendarStart.SelectedDate;
+
+                // Get the number of days only
+                int daysDifference = timeDifference.Days;
+                Session["TotalDays"] = daysDifference;
 
 
                 Session["hangarID"] = null;
@@ -139,7 +140,7 @@ namespace EliteHangers
             if (Session["sc1"] != null && Session["hangarID"]!=null)
             {
                 //exclude past dates and booked days
-                query = $"select date_start, date_end from Booking where hangar_id = {Session["hangarID"].ToString()}; ";
+                query = $"select date_start, date_end from Booking where hangar_id = {Session["hangarID"].ToString()} AND status = 1; ";
                 List<DateTime> dateList = sql.databaseDates(query);
                 for (int i = 0; i < dateList.Count; i = i + 2)
                 {

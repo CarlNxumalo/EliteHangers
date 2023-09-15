@@ -12,27 +12,55 @@ namespace EliteHangers
         SQL sql = new SQL();
         UserAuth user;
         string query;
+        string queryTable = @"SELECT
+                        H.hangar_id,
+                        H.name AS HangarName,
+                        H.price AS HangarPrice,
+                        C.name AS CityName
+                    FROM
+                        Hangar H
+                    INNER JOIN
+                        City C ON H.city_id = C.city_id;";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] != null)
+            try
             {
-                user = (UserAuth)Session["user"];
-
-                if (user.role == 2)//customer
+                if (Session["user"] != null)
                 {
-                    Response.Redirect("dashboard3.aspx");
+                    user = (UserAuth)Session["user"];
+
+                    if (user.role == 2)//customer
+                    {
+                        Response.Redirect("dashboard3.aspx");
+                    }
+                    if (user.role == 0)//employee
+                    {
+                        Response.Redirect("Clerk.aspx");
+                    }
+
                 }
-                if (user.role == 0)//employee
+                else
                 {
-                    Response.Redirect("Clerk.aspx");
+                    Response.Redirect("Login.aspx");
+                }
+                if (!IsPostBack)
+                {
+                    resetDDL();
                 }
 
+
+                sql.displayDGV(queryTable, GridView1, "Hangar");
             }
-            else
+            catch (Exception)
             {
-                Response.Redirect("Login.aspx");
+
+                Console.WriteLine("Error things");
             }
-            if (!IsPostBack)
+
+        }
+        public void resetDDL()
+        {
+            try
             {
                 query = "SELECT name, city_id FROM City;";
                 sql.comboBox(query, "City", "name", ddlCityName, "city_id");
@@ -43,8 +71,11 @@ namespace EliteHangers
                 query = "SELECT name, hangar_id FROM Hangar;";
                 sql.comboBox(query, "Hangar", "name", ddlUpdateHangername, "hangar_id");
             }
-            sql.display("Hangar", GridView1);
+            catch (Exception)
+            {
 
+                Console.WriteLine("ddl error");
+            }
         }
 
         protected void txtCity0_TextChanged(object sender, EventArgs e)
@@ -54,31 +85,70 @@ namespace EliteHangers
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            if (ddlCityName.Text != "")
+            try
             {
+                if (ddlCityName.Text != "")
+                {
 
-                sql.insertHanger(int.Parse(ddlCityName.SelectedValue), txtName.Text, decimal.Parse(txtPrice.Text));
-                sql.display("Hangar", GridView1);
+                    sql.insertHanger(int.Parse(ddlCityName.SelectedValue), txtName.Text, decimal.Parse(txtPrice.Text));
+                    sql.displayDGV(queryTable, GridView1, "Hangar");
+                    lblErrorInsert.Text = "Entered new Hangar"+txtHanger.Text;
+                    resetDDL();
+                }
+                //select city
+                else
+                {
+                    lblErrorcity.Text = "Select a city name";
+                }
             }
-            //select city
-
-            else
+            catch (Exception)
             {
-                lblErrorcity.Text = "Select a city name";
+
+                lblErrorInsert.Text = "Enter all details please";
+                Console.WriteLine("insert error");
             }
                 
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            sql.deleteHanger(int.Parse(txtHanger.Text));
-            sql.display("Hangar", GridView1);
+            try
+            {
+                lblErrorDel.Text = "";
+                int del = 0;
+                if (int.TryParse(txtHanger.Text, out del))
+                {
+                    sql.deleteHanger(int.Parse(txtHanger.Text));
+                    sql.displayDGV(queryTable, GridView1, "Hangar");
+                }
+                else
+                {
+                    lblErrorDel.Text = "Please enter an integer";
+                }
+            }
+            catch (Exception)
+            {
+
+                lblErrorDel.Text = "Cannot delete hangar because it has been booked";
+            }
+            
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            sql.updateHanger(int.Parse(ddlUpdateHangername.SelectedValue),int.Parse(ddlUpdateCityName.SelectedValue), txtNameUp.Text, decimal.Parse(txtPriceUp.Text));
-            sql.display("Hangar", GridView1);
+            try
+            {
+                lblErrorUpdate.Text = "Updated Hangar";
+                sql.updateHanger(int.Parse(ddlUpdateHangername.SelectedValue), int.Parse(ddlUpdateCityName.SelectedValue), txtNameUp.Text, decimal.Parse(txtPriceUp.Text));
+                sql.displayDGV(queryTable, GridView1, "Hangar");
+                resetDDL();
+            }
+            catch (Exception)
+            {
+
+                lblErrorUpdate.Text = "Please fill in required details";
+            }
+            
         }
 
         protected void ddlCityName_SelectedIndexChanged(object sender, EventArgs e)

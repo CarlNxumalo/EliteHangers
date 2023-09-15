@@ -25,7 +25,7 @@
          <div class="header">
             <div class="Transaction">
                 <h1 style="font-style: italic;">
-                    Receipt
+                    Successfully booked
                 </h1>
                 <div class="item">
                 
@@ -60,16 +60,7 @@
                          <asp:Label ID="lblEndDate" runat="server"></asp:Label>
                     </p>
                 </div>
-                <div class="item">
-                    <p class="detail">
-                        Amount:
-                    </p>
-                    <p class="value">
-                         
-                        <asp:Label ID="lblAmount" runat="server" Text=""></asp:Label>
-                         
-                    </p>
-                </div>
+                
                 <div class="item">
                     <p class="detail">
                         Total Days:

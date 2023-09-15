@@ -19,8 +19,9 @@
             </ul>
         </nav>
     <form id="form1" runat="server">
+        <h1>Cancel your bookings</h1>
         <div>
-            <asp:GridView ID="GridView1" runat="server" Height="160px" Width="407px"></asp:GridView>
+            <asp:GridView ID="dgvBookings" runat="server" Height="160px" Width="407px"></asp:GridView>
         </div>
         
         <asp:Label ID="Label1" runat="server" Text="Select booking:"></asp:Label>
@@ -29,7 +30,7 @@
         <br />
         <asp:Button ID="btnCancel" runat="server" Text="Cancel Booking" Height="34px" OnClick="btnCancel_Click" Width="143px" />
         <br />
-        <asp:Label ID="lblError" runat="server" Text="lblError"></asp:Label>
+        <asp:Label ID="lblError" runat="server"></asp:Label>
        
     </form>
 </body>

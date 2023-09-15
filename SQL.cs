@@ -57,11 +57,22 @@ namespace EliteHangers
             {
                 //database connection 
                 connectionOpen();
-                command = new SqlCommand(query, connection);
-                //adding the parameters to the command
-                foreach (SqlParameter parameter in parameters)
+                if(query!=null)
                 {
-                    command.Parameters.Add(parameter);
+                    command = new SqlCommand(query, connection);
+                }
+                else
+                {
+                    command = new SqlCommand(sql, connection);
+                }
+                
+                //adding the parameters to the command
+                if(parameters!=null)
+                {
+                    foreach (SqlParameter parameter in parameters)
+                    {
+                        command.Parameters.Add(parameter);
+                    }
                 }
                 command.ExecuteNonQuery();
 
@@ -584,5 +595,43 @@ namespace EliteHangers
             return list;
         }
 
+        public void cancel(int booing_id)
+        {
+            query = $"UPDATE Booking SET status = 2 WHERE booking_id = {booing_id}; ";
+            parameters = null;
+            nonQuery(query);
+        } 
+
+        public void checkin(string sql)
+        {
+            query = sql;
+            parameters = null;
+            nonQuery(query);
+        }
+
+        public void recordBooking(int customer_id, int hangar_id, DateTime date_start, DateTime date_end)
+        {
+            query = $@"
+                -- Insert data into the Booking table
+                INSERT INTO [dbo].[Booking] ([customer_id], [hangar_id], [date_start], [date_end], [status])
+                VALUES
+                    ({customer_id}, {hangar_id}, '{date_start}', '{date_end}', 1);
+
+                -- Retrieve the last inserted booking_id
+                DECLARE @lastBookingID INT;
+                DECLARE @Amount money;
+                SELECT @lastBookingID = MAX([booking_id]) FROM [dbo].[Booking];
+                select @Amount = CAST(DATEDIFF(day, date_start, date_end)*h.price AS money) from [dbo].[Booking] b inner join 
+                [dbo].Hangar h on b.hangar_id = h.hangar_id where b.booking_id = @lastBookingID;
+
+                -- Insert data into the Transaction table
+                INSERT INTO [dbo].[Transaction] ([booking_id], [date], [amount], [type])
+                VALUES
+                    (@lastBookingID, GETDATE(), @Amount, 1);";
+            nonQuery(query);
+        }
+        
+
+        
     }
 }

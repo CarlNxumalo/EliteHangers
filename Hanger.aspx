@@ -85,7 +85,8 @@
                 </h1>
                 <li class="li_design"><asp:HyperLink class="link" ID="hlMakeBooking" runat="server" NavigateUrl="~/Report.aspx">Report</asp:HyperLink></li>
                 <li class="li_design"><asp:HyperLink class="link" ID="hlCancelBooking" runat="server" NavigateUrl="~/City.aspx">Maintain City</asp:HyperLink></li>
-                <li class="li_design"><asp:HyperLink class="link" ID="hlUpdateProfile" runat="server" NavigateUrl="~/Hangar.aspx">Maintain Hangar</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlUpdateProfile" runat="server" NavigateUrl="~/Hanger.aspx">Maintain Hangar</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlEmpoyee" runat="server" NavigateUrl="~/Employee.aspx">Maintain Employee</asp:HyperLink></li>
             </ul>
         </nav>
     <form id="form1" runat="server">
@@ -141,21 +142,22 @@
                         <br />
                         &nbsp;<asp:Label ID="Label3" runat="server" Text="Name:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtName" runat="server" ValidationGroup="insert"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:RequiredFieldValidator ID="rqdFeildValidName" runat="server" ControlToValidate="txtName" ErrorMessage="Enter the correct name"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rqdFeildValidName" runat="server" ControlToValidate="txtName" ErrorMessage="Enter the correct name" ValidationGroup="insert"></asp:RequiredFieldValidator>
                         <br />
                         <br />
                         <asp:Label ID="Label4" runat="server" Text="Price:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtPrice" runat="server" ValidationGroup="insert"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:RangeValidator ID="rqdFeildValidPrice" runat="server" ControlToValidate="txtPrice" ErrorMessage="Price must be between 950 and 10000 " MaximumValue="10000" MinimumValue="950" Type="Currency"></asp:RangeValidator>
+                        <asp:RangeValidator ID="rqdFeildValidPrice" runat="server" ControlToValidate="txtPrice" ErrorMessage="Price must be between 950 and 10000 " MaximumValue="10000" MinimumValue="950" Type="Currency" ValidationGroup="insert"></asp:RangeValidator>
                         <br />
                         <br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnInsert" runat="server" Text="Insert" Width="130px" OnClick="btnInsert_Click" />
+                        <asp:Label ID="lblErrorInsert" runat="server"></asp:Label>
                     </asp:Panel>
                 </td>
             </tr>
@@ -198,15 +200,15 @@
                         <br />
                         <asp:Label ID="Label7" runat="server" Text="Name:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                        <asp:TextBox ID="txtNameUp" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rqdFeildValidNameup" runat="server" ControlToValidate="txtNameUp" ErrorMessage="Invalid name"></asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtNameUp" runat="server" ValidationGroup="update"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rqdFeildValidNameup" runat="server" ControlToValidate="txtNameUp" ErrorMessage="Invalid name" ValidationGroup="update"></asp:RequiredFieldValidator>
                         <br />
                         <br />
                         <asp:Label ID="Label8" runat="server" Text="Price:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtPriceUp" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtPriceUp" runat="server" ValidationGroup="update"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;
-                        <asp:RangeValidator ID="rngValidPriceUp" runat="server" ControlToValidate="txtPriceUp" ErrorMessage="Enter monetary value" MaximumValue="20000" MinimumValue="0" Type="Currency"></asp:RangeValidator>
+                        <asp:RangeValidator ID="rngValidPriceUp" runat="server" ControlToValidate="txtPriceUp" ErrorMessage="Enter monetary value" MaximumValue="20000" MinimumValue="0" Type="Currency" ValidationGroup="update"></asp:RangeValidator>
                         <br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -222,12 +224,15 @@
                         <br />
                         <asp:Label ID="Label5" runat="server" Text="Hanger ID:"></asp:Label>
                         &nbsp;&nbsp;&nbsp;
-                        <asp:TextBox ID="txtHanger" runat="server" OnTextChanged="txtCity0_TextChanged"></asp:TextBox>
+                        <asp:TextBox ID="txtHanger" runat="server" OnTextChanged="txtCity0_TextChanged" ValidationGroup="delete"></asp:TextBox>
+                        <br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtHanger" ErrorMessage="Enter Hangar ID" ValidationGroup="delete"></asp:RequiredFieldValidator>
                         <br />
                         <br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnDelete" runat="server" Text="Delete" Width="130px" OnClick="btnDelete_Click" />
+                        <asp:Label ID="lblErrorDel" runat="server"></asp:Label>
                         <br />
                         <br />
                         <br />
@@ -239,7 +244,9 @@
                 <td class="auto-style11">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style27"></td>
+                <td class="auto-style27">
+                    <asp:Label ID="lblErrorUpdate" runat="server" Text="Label"></asp:Label>
+                </td>
                 <td class="auto-style30"></td>
                 <td class="auto-style31"></td>
                 <td class="auto-style30"></td>

@@ -21,30 +21,39 @@ namespace EliteHangers
         {
             //create a session after authentication
             //check both tables 
-            user = AuthenticateUser(txtEmail.Text, txtPassword.Text);
-            if (user != null)
+            try
             {
-                Session["user"] = user;
-                Console.WriteLine("Yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
+                user = AuthenticateUser(txtEmail.Text, txtPassword.Text);
+                if (user != null)
+                {
+                    Session["user"] = user;
+                    Console.WriteLine("Yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
 
-                if(user.role == 2)//customer
-                {
-                    Response.Redirect("dashboard3.aspx");
+                    if (user.role == 2)//customer
+                    {
+                        Response.Redirect("dashboard3.aspx");
+                    }
+                    if (user.role == 1)//manager
+                    {
+                        Response.Redirect("Report.aspx");
+                    }
+                    else//employee 0
+                    {
+                        Response.Redirect("Clerk.aspx");
+                    }
                 }
-                if (user.role == 1)//manager
+                else
                 {
-                    Response.Redirect("Report.aspx");
-                }
-                else//employee 0
-                {
-                    Response.Redirect("Clerk.aspx");
+                    //error message lbl 
+                    lblerror.Text = "User email or password is incorrect";
                 }
             }
-            else
+            catch (Exception ex)
             {
-                //error message lbl 
-                lblerror.Text = "User email or password is incorrect";
+
+                lblerror.Text = ex.Message;
             }
+            
         }
 
         private UserAuth AuthenticateUser(string email, string password)

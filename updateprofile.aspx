@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="nav.css" rel="stylesheet" />
     <style type="text/css">
         .auto-style1 {
             width: 100%;
@@ -28,6 +29,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
+         <nav class="header">
+            <ul class="links">
+                <h1>
+                    Elite Hangars
+                </h1>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlMakeBooking" runat="server" NavigateUrl="~/dashboard3.aspx">Make Booking</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlCancelBooking" runat="server" NavigateUrl="~/CancelBooking.aspx">Cancel Booking</asp:HyperLink></li>
+                <li class="li_design"><asp:HyperLink class="link" ID="hlUpdateProfile" runat="server" NavigateUrl="~/updateprofile.aspx">Profile</asp:HyperLink></li>
+            </ul>
+        </nav>
         <div>
             <h1>Update Profile</h1>
         </div>
@@ -53,7 +64,7 @@
                     <td>
             <asp:TextBox ID="txtSurname" runat="server"></asp:TextBox>
         &nbsp;
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPassword" ErrorMessage="Enter your surname" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtSurname" ErrorMessage="Enter your surname" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -65,6 +76,7 @@
             <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         &nbsp;
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter the correct email" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter email" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -75,7 +87,7 @@
                     <td>
             <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
         &nbsp;
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Enter your password" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Enter your password" ForeColor="Red" ControlToValidate="txtPassword"></asp:RequiredFieldValidator>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -86,7 +98,7 @@
                     <td>
             <asp:TextBox ID="txtPlaneNumber" runat="server"></asp:TextBox>
         &nbsp;
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Enter the name of the plane" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Enter the name of the plane" ForeColor="Red" ControlToValidate="txtPlaneNumber"></asp:RequiredFieldValidator>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -94,10 +106,10 @@
             <table class="auto-style5">
                 <tr>
                     <td class="auto-style3">
-        <asp:Button ID="btnUpdateInfo" runat="server" Text="Update Info" Height="41px" Width="107px" OnClick="btnAddCustomer_Click" />
+        <asp:Button ID="btnUpdateInfo" runat="server" Text="Update Info" Height="46px" Width="118px" OnClick="btnAddCustomer_Click" />
                     </td>
                     <td class="auto-style4">
-                        <asp:Button ID="btnClear" runat="server" Height="39px" OnClick="btnClear_Click" Text="Clear" Width="110px" />
+                        <asp:Label ID="lblMessage" runat="server"></asp:Label>
                     </td>
                     <td class="auto-style4"></td>
                 </tr>

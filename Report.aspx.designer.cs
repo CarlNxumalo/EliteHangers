@@ -42,6 +42,15 @@ namespace EliteHangers
         protected global::System.Web.UI.WebControls.HyperLink hlUpdateProfile;
 
         /// <summary>
+        /// hlEmpoyee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlEmpoyee;
+
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>

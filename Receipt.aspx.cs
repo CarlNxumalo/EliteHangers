@@ -23,14 +23,13 @@ namespace EliteHangers
                     {
                         lblCityName.Text= Session["CityName"].ToString();
                         lblHangarName.Text=  Session["HangarName"].ToString();
-                        lblAmount.Text =  Session["Amount"].ToString();
                         lblStartDate.Text =  Session["DateStart"].ToString();
                         lblEndDate.Text =  Session["DateEnd"].ToString();
                         lblDays.Text =  Session["TotalDays"].ToString();
                     }
                     else
                     {
-                        Response.Redirect("dashboard.aspx");
+                        Response.Redirect("dashboard3.aspx");
                     }
                 }
                 else if (user.role == 1)
